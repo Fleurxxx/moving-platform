@@ -1,0 +1,30 @@
+{
+    "sourceFile": "public/index.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1710165458764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710165463874,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n     <meta charset=\"utf-8\">\n     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n     <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n     <link rel=\"icon\" href=\"<%= BASE_URL %>favicon.ico\">\n-    <link re\n+    <link rel=\"\"\n     <title><%= htmlWebpackPlugin.options.title %></title>\n   </head>\n   <body>\n     <noscript>\n"
+                },
+                {
+                    "date": 1710165470472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n     <meta charset=\"utf-8\">\n     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n     <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n     <link rel=\"icon\" href=\"<%= BASE_URL %>favicon.ico\">\n-    <link rel=\"shy\"\n+    <link rel=\"shylesheet\"\n     <title><%= htmlWebpackPlugin.options.title %></title>\n   </head>\n   <body>\n     <noscript>\n"
+                },
+                {
+                    "date": 1710165478528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,18 @@\n+<!DOCTYPE html>\n+<html lang=\"\">\n+  <head>\n+    <meta charset=\"utf-8\">\n+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n+    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n+    <link rel=\"icon\" href=\"<%= BASE_URL %>favicon.ico\">\n+    <link rel=\"shylesheet\" href=\"css\"\n+    <title><%= htmlWebpackPlugin.options.title %></title>\n+  </head>\n+  <body>\n+    <noscript>\n+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>\n+    </noscript>\n+    <div id=\"app\"></div>\n+    <!-- built files will be auto injected -->\n+  </body>\n+</html>\n"
+                }
+            ],
+            "date": 1710165458764,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\n<html lang=\"\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n    <link rel=\"icon\" href=\"<%= BASE_URL %>favicon.ico\">\n    <link re\n    <title><%= htmlWebpackPlugin.options.title %></title>\n  </head>\n  <body>\n    <noscript>\n      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>\n    </noscript>\n    <div id=\"app\"></div>\n    <!-- built files will be auto injected -->\n  </body>\n</html>\n"
+        }
+    ]
+}

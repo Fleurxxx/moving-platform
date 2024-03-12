@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/App.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1710164898677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710164903951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n <template>\n-  <\n+  <div><\n+    /div>\n   <router-view/>\n </template>\n \n <style lang=\"less\">\n"
+                },
+                {
+                    "date": 1710164913011,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n <template>\n-  <div><\n-    /div>\n-  <router-view/>\n+  <div>\n+    <router-view/>\n+  </div>\n+  \n </template>\n \n <style lang=\"less\">\n #app {\n"
+                },
+                {
+                    "date": 1710164960128,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,6 +4,6 @@\n   </div>\n </template>\n \n <style lang=\"less\">\n-ht\n+html\n </style>\n"
+                },
+                {
+                    "date": 1710164965862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+<template>\n+  <div>\n+    <router-view/>\n+  </div>\n+</template>\n+\n+<style lang=\"less\">\n+html,\n+body,\n+\n+</style>\n"
+                }
+            ],
+            "date": 1710164898677,
+            "name": "Commit-0",
+            "content": "<template>\n  <\n  <router-view/>\n</template>\n\n<style lang=\"less\">\n#app {\n  font-family: Avenir, Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n}\n\nnav {\n  padding: 30px;\n\n  a {\n    font-weight: bold;\n    color: #2c3e50;\n\n    &.router-link-exact-active {\n      color: #42b983;\n    }\n  }\n}\n</style>\n"
+        }
+    ]
+}

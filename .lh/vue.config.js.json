@@ -1,0 +1,58 @@
+{
+    "sourceFile": "vue.config.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1710164862710,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710164868128,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n const { defineConfig } = require('@vue/cli-service')\n module.exports = defineConfig({\n-  transpileDependencies: true\n-  关闭eslint校验，重新编译就正常了\n+  transpileDependencies: true,\n+  //关闭eslint校验，重新编译就正常了\n lintOnSave: false\n })\n"
+                },
+                {
+                    "date": 1710166211848,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,25 @@\n const { defineConfig } = require('@vue/cli-service')\n module.exports = defineConfig({\n   transpileDependencies: true,\n   //关闭eslint校验，重新编译就正常了\n-lintOnSave: false\n+  lintOnSave: false\n })\n+const { defineConfig } = require('@vue/cli-service');\n+const AutoImport = require('unplugin-auto-import/webpack');\n+const Components = require('unplugin-vue-components/webpack');\n+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');\n+module.exports = defineConfig({\n+  transpileDependencies: true,\n+  //关闭eslint校验\n+  lintOnSave: false,\n+  configureWebpack: {\n+    plugins: [\n+      AutoImport({\n+        resolvers: [ElementPlusResolver()],\n+      }),\n+      Components({\n+        resolvers: [ElementPlusResolver()],\n+      }),\n+    ],\n+  }\n+})\n"
+                },
+                {
+                    "date": 1710166221036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,5 @@\n-const { defineConfig } = require('@vue/cli-service')\n-module.exports = defineConfig({\n-  transpileDependencies: true,\n-  //关闭eslint校验，重新编译就正常了\n-  lintOnSave: false\n-})\n+\n const { defineConfig } = require('@vue/cli-service');\n const AutoImport = require('unplugin-auto-import/webpack');\n const Components = require('unplugin-vue-components/webpack');\n const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');\n"
+                },
+                {
+                    "date": 1710167153560,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-\n const { defineConfig } = require('@vue/cli-service');\n const AutoImport = require('unplugin-auto-import/webpack');\n const Components = require('unplugin-vue-components/webpack');\n const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');\n@@ -17,4 +16,5 @@\n       }),\n     ],\n   }\n })\n+pnpm install -D unplugin-vue-components unplugin-auto-import\n"
+                },
+                {
+                    "date": 1710167162206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,5 +16,48 @@\n       }),\n     ],\n   }\n })\n-pnpm install -D unplugin-vue-components unplugin-auto-import\n+\n+import AutoImport  from 'unplugin-auto-import/vite'\n+\n+import Components from 'unplugin-vue-components/vite'\n+\n+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'//解析器\n+\n+export default defineConfig({\n+ //此处server可以根据自己需求设置\n+\n+  server: {\n+\n+    open: true,  //项目启动后自动访问项目\n+\n+    port:8088//这里是可以自己设置端口\n+\n+  },\n+\n+  plugins: [\n+\n+    vue(),\n+\n+    //当前项目不需要全局引入，用到什么组件自动解析\n+\n+    Components({\n+\n+      resolvers:[ElementPlusResolver()]\n+\n+    }),\n+\n+    AutoImport({\n+\n+      resolvers: [ElementPlusResolver()]\n+\n+    }),\n+\n+  ],//插件\n+\n+})\n+————————————————\n+\n+                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。\n+                        \n+原文链接：https://blog.csdn.net/weixin_43287787/article/details/130126338\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1710167175705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,24 +18,16 @@\n   }\n })\n \n import AutoImport  from 'unplugin-auto-import/vite'\n-\n import Components from 'unplugin-vue-components/vite'\n-\n import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'//解析器\n-\n export default defineConfig({\n  //此处server可以根据自己需求设置\n-\n   server: {\n-\n     open: true,  //项目启动后自动访问项目\n-\n     port:8088//这里是可以自己设置端口\n-\n   },\n-\n   plugins: [\n \n     vue(),\n \n@@ -54,10 +46,5 @@\n     }),\n \n   ],//插件\n \n-})\n-————————————————\n-\n-                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。\n-                        \n-原文链接：https://blog.csdn.net/weixin_43287787/article/details/130126338\n\\ No newline at end of file\n+})\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1710167186754,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,23 +27,15 @@\n     open: true,  //项目启动后自动访问项目\n     port:8088//这里是可以自己设置端口\n   },\n   plugins: [\n-\n     vue(),\n-\n     //当前项目不需要全局引入，用到什么组件自动解析\n-\n     Components({\n-\n       resolvers:[ElementPlusResolver()]\n-\n     }),\n-\n     AutoImport({\n-\n       resolvers: [ElementPlusResolver()]\n-\n     }),\n \n   ],//插件\n \n"
+                },
+                {
+                    "date": 1710167208805,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,26 +17,4 @@\n     ],\n   }\n })\n \n-import AutoImport  from 'unplugin-auto-import/vite'\n-import Components from 'unplugin-vue-components/vite'\n-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'//解析器\n-export default defineConfig({\n- //此处server可以根据自己需求设置\n-  server: {\n-    open: true,  //项目启动后自动访问项目\n-    port:8088//这里是可以自己设置端口\n-  },\n-  plugins: [\n-    vue(),\n-    //当前项目不需要全局引入，用到什么组件自动解析\n-    Components({\n-      resolvers:[ElementPlusResolver()]\n-    }),\n-    AutoImport({\n-      resolvers: [ElementPlusResolver()]\n-    }),\n-\n-  ],//插件\n-\n-})\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1710167214129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n const { defineConfig } = require('@vue/cli-service')\n module.exports = defineConfig({\n   transpileDependencies: true\n+  关闭eslint校验，重新编译就正常了\n+lintOnSave: false\n })\n"
+                },
+                {
+                    "date": 1710167236680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,45 @@\n+const { defineConfig } = require('@vue/cli-service')\n+module.exports = defineConfig({\n+  transpileDependencies: true,\n+  //关闭eslint校验，重新编译就正常了\n+  lintOnSave: false\n+})\n+const { defineConfig } = require('@vue/cli-service');\n+const AutoImport = require('unplugin-auto-import/webpack');\n+const Components = require('unplugin-vue-components/webpack');\n+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers'); //解析器\n+module.exports = defineConfig({\n+  transpileDependencies: true,\n+  //关闭eslint校验\n+  lintOnSave: false,\n+  configureWebpack: {\n+    plugins: [\n+      AutoImport({\n+        resolvers: [ElementPlusResolver()],\n+      }),\n+      Components({\n+        resolvers: [ElementPlusResolver()],\n+      }),\n+    ],\n+  }\n+})\n+import AutoImport  from 'unplugin-auto-import/vite'\n+import Components from 'unplugin-vue-components/vite'\n+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'\n+export default defineConfig({\n+ //此处server可以根据自己需求设置\n+  server: {\n+    open: true,  //项目启动后自动访问项目\n+    port:8088//这里是可以自己设置端口\n+  },\n+  plugins: [\n+    vue(),\n+    //当前项目不需要全局引入，用到什么组件自动解析\n+    Components({\n+      resolvers:[ElementPlusResolver()]\n+    }),\n+    AutoImport({\n+      resolvers: [ElementPlusResolver()]\n+    }),\n+  ],//插件\n+})\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1710164862710,
+            "name": "Commit-0",
+            "content": "const { defineConfig } = require('@vue/cli-service')\nmodule.exports = defineConfig({\n  transpileDependencies: true\n  关闭eslint校验，重新编译就正常了\nlintOnSave: false\n})\n"
+        }
+    ]
+}

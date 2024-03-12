@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/store/index.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1710227685392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710227710447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,6 @@\n-/*\n- * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git\n- * @Date: 2023-12-20 20:21:30\n- * @LastEditors: Fleurxxx 984209872@qq.com\n- * @LastEditTime: 2024-03-12 15:14:45\n- * @FilePath: \\hope-enroll\\src\\store\\store.ts\n- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\n- */\n import { createPinia } from 'pinia'\n import { user } from './user';\n-import { problem } from './problem';\n import piniaPluginPersist from 'pinia-plugin-persist'\n \n const store = createPinia()\n store.use(piniaPluginPersist) // 使用插件\n"
+                },
+                {
+                    "date": 1710227715856,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,6 +4,6 @@\n \n const store = createPinia()\n store.use(piniaPluginPersist) // 使用插件\n    \n-export { user, problem };\n+export { user };\n export default store;\n"
+                }
+            ],
+            "date": 1710227685392,
+            "name": "Commit-0",
+            "content": "/*\n * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git\n * @Date: 2023-12-20 20:21:30\n * @LastEditors: Fleurxxx 984209872@qq.com\n * @LastEditTime: 2024-03-12 15:14:45\n * @FilePath: \\hope-enroll\\src\\store\\store.ts\n * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\n */\nimport { createPinia } from 'pinia'\nimport { user } from './user';\nimport { problem } from './problem';\nimport piniaPluginPersist from 'pinia-plugin-persist'\n\nconst store = createPinia()\nstore.use(piniaPluginPersist) // 使用插件\n   \nexport { user, problem };\nexport default store;\n"
+        }
+    ]
+}

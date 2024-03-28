@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/views/Video.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1710744082841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710744088225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,9 @@\n-v\n\\ No newline at end of file\n+<!--\r\n+ * @Author: Fleurxxx 984209872@qq.com\r\n+ * @Date: 2024-03-18 14:41:15\r\n+ * @LastEditors: Fleurxxx 984209872@qq.com\r\n+ * @LastEditTime: 2024-03-18 14:41:23\r\n+ * @FilePath: \\moving-platform\\src\\views\\Video.vue\r\n+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n+-->\r\n+vue3\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1711100053565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,5 +5,49 @@\n  * @LastEditTime: 2024-03-18 14:41:23\r\n  * @FilePath: \\moving-platform\\src\\views\\Video.vue\r\n  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n -->\r\n-vue3\n\\ No newline at end of file\n+<template>\r\n+  <div >\r\n+\r\n+  </div>\r\n+</template>\r\n+\r\n+<script setup>\r\n+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n+import { useStore } from 'vuex';\r\n+import { useRoute, useRouter } from 'vue-router';\r\n+imp\r\n+/**\r\n+* 仓库\r\n+*/\r\n+const store = useStore();\r\n+/**\r\n+* 路由对象\r\n+*/\r\n+const route = useRoute();\r\n+/**\r\n+* 路由实例\r\n+*/\r\n+const router = useRouter();\r\n+//console.log('1-开始创建组件-setup')\r\n+/**\r\n+* 数据部分\r\n+*/\r\n+const data = reactive({})\r\n+onBeforeMount(() => {\r\n+  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n+})\r\n+onMounted(() => {\r\n+  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n+})\r\n+watchEffect(()=>{\r\n+})\r\n+// 使用toRefs解构\r\n+// let { } = { ...toRefs(data) } \r\n+defineExpose({\r\n+  ...toRefs(data)\r\n+})\r\n+\r\n+</script>\r\n+<style scoped lang='less'>\r\n+</style>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1711100059614,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n <script setup>\r\n import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n import { useStore } from 'vuex';\r\n import { useRoute, useRouter } from 'vue-router';\r\n-imp\r\n+importVideo\r\n /**\r\n * 仓库\r\n */\r\n const store = useStore();\r\n"
+                },
+                {
+                    "date": 1711100068960,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n <script setup>\r\n import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n import { useStore } from 'vuex';\r\n import { useRoute, useRouter } from 'vue-router';\r\n-importVideo\r\n+import Video from '@'\r\n /**\r\n * 仓库\r\n */\r\n const store = useStore();\r\n"
+                },
+                {
+                    "date": 1711100083895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,53 @@\n+<!--\r\n+ * @Author: Fleurxxx 984209872@qq.com\r\n+ * @Date: 2024-03-18 14:41:15\r\n+ * @LastEditors: Fleurxxx 984209872@qq.com\r\n+ * @LastEditTime: 2024-03-18 14:41:23\r\n+ * @FilePath: \\moving-platform\\src\\views\\Video.vue\r\n+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n+-->\r\n+<template>\r\n+  <div >\r\n+\r\n+  </div>\r\n+</template>\r\n+\r\n+<script setup>\r\n+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n+import { useStore } from 'vuex';\r\n+import { useRoute, useRouter } from 'vue-router';\r\n+import Video from '@/component/V'\r\n+/**\r\n+* 仓库\r\n+*/\r\n+const store = useStore();\r\n+/**\r\n+* 路由对象\r\n+*/\r\n+const route = useRoute();\r\n+/**\r\n+* 路由实例\r\n+*/\r\n+const router = useRouter();\r\n+//console.log('1-开始创建组件-setup')\r\n+/**\r\n+* 数据部分\r\n+*/\r\n+const data = reactive({})\r\n+onBeforeMount(() => {\r\n+  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n+})\r\n+onMounted(() => {\r\n+  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n+})\r\n+watchEffect(()=>{\r\n+})\r\n+// 使用toRefs解构\r\n+// let { } = { ...toRefs(data) } \r\n+defineExpose({\r\n+  ...toRefs(data)\r\n+})\r\n+\r\n+</script>\r\n+<style scoped lang='less'>\r\n+</style>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1711100093777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n <script setup>\r\n import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n import { useStore } from 'vuex';\r\n import { useRoute, useRouter } from 'vue-router';\r\n-import Video from '@/component/V'\r\n+import Video from '@/component/Video.vue'\r\n /**\r\n * 仓库\r\n */\r\n const store = useStore();\r\n@@ -49,58 +49,5 @@\n })\r\n \r\n </script>\r\n <style scoped lang='less'>\r\n-</style>\n-<!--\r\n- * @Author: Fleurxxx 984209872@qq.com\r\n- * @Date: 2024-03-18 14:41:15\r\n- * @LastEditors: Fleurxxx 984209872@qq.com\r\n- * @LastEditTime: 2024-03-18 14:41:23\r\n- * @FilePath: \\moving-platform\\src\\views\\Video.vue\r\n- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n--->\r\n-<template>\r\n-  <div >\r\n-\r\n-  </div>\r\n-</template>\r\n-\r\n-<script setup>\r\n-import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n-import { useStore } from 'vuex';\r\n-import { useRoute, useRouter } from 'vue-router';\r\n-import Video from '@'\r\n-/**\r\n-* 仓库\r\n-*/\r\n-const store = useStore();\r\n-/**\r\n-* 路由对象\r\n-*/\r\n-const route = useRoute();\r\n-/**\r\n-* 路由实例\r\n-*/\r\n-const router = useRouter();\r\n-//console.log('1-开始创建组件-setup')\r\n-/**\r\n-* 数据部分\r\n-*/\r\n-const data = reactive({})\r\n-onBeforeMount(() => {\r\n-  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n-})\r\n-onMounted(() => {\r\n-  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n-})\r\n-watchEffect(()=>{\r\n-})\r\n-// 使用toRefs解构\r\n-// let { } = { ...toRefs(data) } \r\n-defineExpose({\r\n-  ...toRefs(data)\r\n-})\r\n-\r\n-</script>\r\n-<style scoped lang='less'>\r\n </style>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1711100104405,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,53 @@\n+<!--\r\n+ * @Author: Fleurxxx 984209872@qq.com\r\n+ * @Date: 2024-03-18 14:41:15\r\n+ * @LastEditors: Fleurxxx 984209872@qq.com\r\n+ * @LastEditTime: 2024-03-18 14:41:23\r\n+ * @FilePath: \\moving-platform\\src\\views\\Video.vue\r\n+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n+-->\r\n+<template>\r\n+  <div >\r\n+    <\r\n+  </div>\r\n+</template>\r\n+\r\n+<script setup>\r\n+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n+import { useStore } from 'vuex';\r\n+import { useRoute, useRouter } from 'vue-router';\r\n+import Video from '@/component/Video.vue'\r\n+/**\r\n+* 仓库\r\n+*/\r\n+const store = useStore();\r\n+/**\r\n+* 路由对象\r\n+*/\r\n+const route = useRoute();\r\n+/**\r\n+* 路由实例\r\n+*/\r\n+const router = useRouter();\r\n+//console.log('1-开始创建组件-setup')\r\n+/**\r\n+* 数据部分\r\n+*/\r\n+const data = reactive({})\r\n+onBeforeMount(() => {\r\n+  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n+})\r\n+onMounted(() => {\r\n+  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n+})\r\n+watchEffect(()=>{\r\n+})\r\n+// 使用toRefs解构\r\n+// let { } = { ...toRefs(data) } \r\n+defineExpose({\r\n+  ...toRefs(data)\r\n+})\r\n+\r\n+</script>\r\n+<style scoped lang='less'>\r\n+</style>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1711100114110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n -->\r\n <template>\r\n   <div >\r\n-    <Video />\r\n+    <ideo />\r\n   </div>\r\n </template>\r\n \r\n <script setup>\r\n"
+                },
+                {
+                    "date": 1711219765896,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,53 @@\n+<!--\r\n+ * @Author: Fleurxxx 984209872@qq.com\r\n+ * @Date: 2024-03-18 14:41:15\r\n+ * @LastEditors: Fleurxxx 984209872@qq.com\r\n+ * @LastEditTime: 2024-03-22 17:35:14\r\n+ * @FilePath: \\moving-platform\\src\\views\\Video.vue\r\n+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n+-->\r\n+<template>\r\n+  <div class=\"center-container\">\r\n+    <video />\r\n+  </div>\r\n+</template>\r\n+\r\n+<script setup>\r\n+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n+import { useStore } from 'vuex';\r\n+import { useRoute, useRouter } from 'vue-router';\r\n+import video from '@/component/Video.vue'\r\n+/**\r\n+* 仓库\r\n+*/\r\n+const store = useStore();\r\n+/**\r\n+* 路由对象\r\n+*/\r\n+const route = useRoute();\r\n+/**\r\n+* 路由实例\r\n+*/\r\n+const router = useRouter();\r\n+//console.log('1-开始创建组件-setup')\r\n+/**\r\n+* 数据部分\r\n+*/\r\n+const data = reactive({})\r\n+onBeforeMount(() => {\r\n+  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n+})\r\n+onMounted(() => {\r\n+  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n+})\r\n+watchEffect(()=>{\r\n+})\r\n+// 使用toRefs解构\r\n+// let { } = { ...toRefs(data) } \r\n+defineExpose({\r\n+  ...toRefs(data)\r\n+})\r\n+\r\n+</script>\r\n+<style scoped lang='less'>\r\n+</style>\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1710744082841,
+            "name": "Commit-0",
+            "content": "v"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/views/Exhibition.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1711521488260,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1711521545079,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,16 @@\n+<!--\r\n+ * @Author: Fleurxxx 984209872@qq.com\r\n+ * @Date: 2024-03-27 14:38:02\r\n+ * @LastEditors: Fleurxxx 984209872@qq.com\r\n+ * @LastEditTime: 2024-03-27 14:38:08\r\n+ * @FilePath: \\moving-platform\\src\\views\\Exhibition.vue\r\n+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n+-->\r\n <template>\r\n-  <div ></div>\r\n+  <div >\r\n+    \r\n+  </div>\r\n </template>\r\n \r\n <script setup>\r\n import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n"
+                },
+                {
+                    "date": 1711521550787,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n  * @FilePath: \\moving-platform\\src\\views\\Exhibition.vue\r\n  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n -->\r\n <template>\r\n-  <div class=\"container\">\r\n+  <div class=\"container\"></div>\r\n \r\n   </div>\r\n </template>\r\n \r\n"
+                },
+                {
+                    "date": 1711521585892,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,55 @@\n+<!--\r\n+ * @Author: Fleurxxx 984209872@qq.com\r\n+ * @Date: 2024-03-27 14:38:02\r\n+ * @LastEditors: Fleurxxx 984209872@qq.com\r\n+ * @LastEditTime: 2024-03-27 14:38:08\r\n+ * @FilePath: \\moving-platform\\src\\views\\Exhibition.vue\r\n+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n+-->\r\n+<template>\r\n+  <div class=\"container\">\r\n+\r\n+  </div>\r\n+</template>\r\n+\r\n+<script setup>\r\n+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n+import { useStore } from 'vuex';\r\n+import { useRoute, useRouter } from 'vue-router';\r\n+/**\r\n+* 仓库\r\n+*/\r\n+const store = useStore();\r\n+/**\r\n+* 路由对象\r\n+*/\r\n+const route = useRoute();\r\n+/**\r\n+* 路由实例\r\n+*/\r\n+const router = useRouter();\r\n+//console.log('1-开始创建组件-setup')\r\n+/**\r\n+* 数据部分\r\n+*/\r\n+const data = reactive({})\r\n+onBeforeMount(() => {\r\n+  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n+})\r\n+onMounted(() => {\r\n+  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n+})\r\n+watchEffect(()=>{\r\n+})\r\n+// 使用toRefs解构\r\n+// let { } = { ...toRefs(data) } \r\n+defineExpose({\r\n+  ...toRefs(data)\r\n+})\r\n+\r\n+</script>\r\n+<style scoped lang='less'>\r\n+.container{\r\n+    \r\n+}\r\n+</style>\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1711521488260,
+            "name": "Commit-0",
+            "content": "<template>\r\n  <div ></div>\r\n</template>\r\n\r\n<script setup>\r\nimport { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\nimport { useStore } from 'vuex';\r\nimport { useRoute, useRouter } from 'vue-router';\r\n/**\r\n* 仓库\r\n*/\r\nconst store = useStore();\r\n/**\r\n* 路由对象\r\n*/\r\nconst route = useRoute();\r\n/**\r\n* 路由实例\r\n*/\r\nconst router = useRouter();\r\n//console.log('1-开始创建组件-setup')\r\n/**\r\n* 数据部分\r\n*/\r\nconst data = reactive({})\r\nonBeforeMount(() => {\r\n  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n})\r\nonMounted(() => {\r\n  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n})\r\nwatchEffect(()=>{\r\n})\r\n// 使用toRefs解构\r\n// let { } = { ...toRefs(data) } \r\ndefineExpose({\r\n  ...toRefs(data)\r\n})\r\n\r\n</script>\r\n<style scoped lang='less'>\r\n</style>"
+        }
+    ]
+}

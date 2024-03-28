@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/views/Person.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1710508491075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710508497836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,42 @@\n-vue\n\\ No newline at end of file\n+<template>\r\n+  <div ></div>\r\n+</template>\r\n+\r\n+<script setup>\r\n+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n+import { useStore } from 'vuex';\r\n+import { useRoute, useRouter } from 'vue-router';\r\n+/**\r\n+* 仓库\r\n+*/\r\n+const store = useStore();\r\n+/**\r\n+* 路由对象\r\n+*/\r\n+const route = useRoute();\r\n+/**\r\n+* 路由实例\r\n+*/\r\n+const router = useRouter();\r\n+//console.log('1-开始创建组件-setup')\r\n+/**\r\n+* 数据部分\r\n+*/\r\n+const data = reactive({})\r\n+onBeforeMount(() => {\r\n+  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n+})\r\n+onMounted(() => {\r\n+  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n+})\r\n+watchEffect(()=>{\r\n+})\r\n+// 使用toRefs解构\r\n+// let { } = { ...toRefs(data) } \r\n+defineExpose({\r\n+  ...toRefs(data)\r\n+})\r\n+\r\n+</script>\r\n+<style scoped lang='less'>\r\n+</style>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1711009579099,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n <template>\r\n-  <div ></div>\r\n+  <div >\r\n+    个人中心\r\n+  </div>\r\n </template>\r\n \r\n <script setup>\r\n import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n"
+                },
+                {
+                    "date": 1711027552890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n <template>\r\n   <div >\r\n-    个人中心\r\n+    <div>\r\n+\r\n+    </div>\r\n+    \r\n   </div>\r\n </template>\r\n \r\n <script setup>\r\n"
+                },
+                {
+                    "date": 1711027560113,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n <template>\r\n   <div >\r\n     <div>\r\n+      <img\r\n+    </div>\r\n \r\n-    </div>\r\n-    \r\n   </div>\r\n </template>\r\n \r\n <script setup>\r\n"
+                },
+                {
+                    "date": 1711027565342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,47 @@\n+<template>\r\n+  <div >\r\n+    <div>\r\n+      <img src=>\r\n+    </div>\r\n+\r\n+  </div>\r\n+</template>\r\n+\r\n+<script setup>\r\n+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n+import { useStore } from 'vuex';\r\n+import { useRoute, useRouter } from 'vue-router';\r\n+/**\r\n+* 仓库\r\n+*/\r\n+const store = useStore();\r\n+/**\r\n+* 路由对象\r\n+*/\r\n+const route = useRoute();\r\n+/**\r\n+* 路由实例\r\n+*/\r\n+const router = useRouter();\r\n+//console.log('1-开始创建组件-setup')\r\n+/**\r\n+* 数据部分\r\n+*/\r\n+const data = reactive({})\r\n+onBeforeMount(() => {\r\n+  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n+})\r\n+onMounted(() => {\r\n+  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n+})\r\n+watchEffect(()=>{\r\n+})\r\n+// 使用toRefs解构\r\n+// let { } = { ...toRefs(data) } \r\n+defineExpose({\r\n+  ...toRefs(data)\r\n+})\r\n+\r\n+</script>\r\n+<style scoped lang='less'>\r\n+</style>\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1710508491075,
+            "name": "Commit-0",
+            "content": "vue"
+        }
+    ]
+}

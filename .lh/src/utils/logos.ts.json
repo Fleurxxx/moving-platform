@@ -1,0 +1,42 @@
+{
+    "sourceFile": "src/utils/logos.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1710410567199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710411460541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,21 @@\n+/*\r\n+ * @Author: Fleurxxx 984209872@qq.com\r\n+ * @Date: 2024-03-14 18:02:19\r\n+ * @LastEditors: Fleurxxx 984209872@qq.com\r\n+ * @LastEditTime: 2024-03-14 18:17:40\r\n+ * @FilePath: \\moving-platform\\src\\utils\\logos.ts\r\n+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n+ */\r\n const requireModule = require.context(\r\n     '../assets/index/logos',\r\n     false,\r\n     /\\.png$/,\r\n-  );\r\n-  \r\n-  const logos: string[] = [];\r\n-  requireModule.keys().forEach((key: string) => {\r\n-    logos.push(`../assets/index/logos/${key.split('./')[1]}`);\r\n-  });\r\n-  \r\n-  export default logos;\r\n+);\r\n+\r\n+const logos: string[] = [];\r\n+requireModule.keys().forEach((key: string) => {\r\n+logos.push(`../assets/index/logos/${key.split('./')[1]}`);\r\n+});\r\n+\r\n+export default logos;\r\n   \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1710411564491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n  * @FilePath: \\moving-platform\\src\\utils\\logos.ts\r\n  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n  */\r\n const requireModule = require.context(\r\n-    '../assets/index/logos',\r\n+    '../assets/image/logos',\r\n     false,\r\n     /\\.png$/,\r\n );\r\n \r\n"
+                },
+                {
+                    "date": 1710411570190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,10 @@\n  * @FilePath: \\moving-platform\\src\\utils\\logos.ts\r\n  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n  */\r\n const requireModule = require.context(\r\n-    '../assets/image/logos',\r\n+    '../assets/image/cooperation\r\n+    ',\r\n     false,\r\n     /\\.png$/,\r\n );\r\n \r\n"
+                },
+                {
+                    "date": 1710411577655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,9 @@\n  * @FilePath: \\moving-platform\\src\\utils\\logos.ts\r\n  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n  */\r\n const requireModule = require.context(\r\n-    '../assets/image/cooperation\r\n-    ',\r\n+    '@/assets/image/cooperation',\r\n     false,\r\n     /\\.png$/,\r\n );\r\n \r\n"
+                },
+                {
+                    "date": 1710412300262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n );\r\n \r\n const logos: string[] = [];\r\n requireModule.keys().forEach((key: string) => {\r\n-logos.push(`../assets/index/logos/${key.split('./')[1]}`);\r\n+logos.push(`@/assets/image/cooperation/${key.split('./')[1]}`);\r\n });\r\n \r\n export default logos;\r\n   \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1710413979544,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n /*\r\n  * @Author: Fleurxxx 984209872@qq.com\r\n  * @Date: 2024-03-14 18:02:19\r\n  * @LastEditors: Fleurxxx 984209872@qq.com\r\n- * @LastEditTime: 2024-03-14 18:17:40\r\n+ * @LastEditTime: 2024-03-14 18:59:39\r\n  * @FilePath: \\moving-platform\\src\\utils\\logos.ts\r\n  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n  */\r\n const requireModule = require.context(\r\n@@ -13,9 +13,9 @@\n );\r\n \r\n const logos: string[] = [];\r\n requireModule.keys().forEach((key: string) => {\r\n-logos.push(`@/assets/image/cooperation/${key.split('./')[1]}`);\r\n+    logos.push(`@/assets/image/cooperation/${key.split('./')[1]}`);\r\n });\r\n \r\n export default logos;\r\n   \n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1710410567199,
+            "name": "Commit-0",
+            "content": "const requireModule = require.context(\r\n    '../assets/index/logos',\r\n    false,\r\n    /\\.png$/,\r\n  );\r\n  \r\n  const logos: string[] = [];\r\n  requireModule.keys().forEach((key: string) => {\r\n    logos.push(`../assets/index/logos/${key.split('./')[1]}`);\r\n  });\r\n  \r\n  export default logos;\r\n  "
+        }
+    ]
+}

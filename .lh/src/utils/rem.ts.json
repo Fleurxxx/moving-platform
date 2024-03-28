@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/utils/rem.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1710253244017,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1710253244017,
+            "name": "Commit-0",
+            "content": "// 设置 rem 函数\r\nfunction setRem(): void {\r\n    // 320 默认大小16px; 320px = 20rem ;每个元素px基础上/16\r\n    const htmlWidth: number = document.documentElement.clientWidth || document.body.clientWidth;\r\n    // 得到html的Dom元素\r\n    const htmlDom: HTMLElement | null = document.getElementsByTagName('html')[0];\r\n    if (htmlDom) {\r\n      // 设置根元素字体大小\r\n      htmlDom.style.fontSize = htmlWidth / 20 + 'px';\r\n    }\r\n  }\r\n  \r\n  // 初始化\r\n  setRem();\r\n  \r\n  // 改变窗口大小时重新设置 rem\r\n  window.onresize = function () {\r\n    setRem();\r\n  };\r\n  "
+        }
+    ]
+}

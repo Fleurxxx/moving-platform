@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/views/Integral.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1710508525158,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710527022947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,10 @@\n <template>\r\n-  <div ></div>\r\n+  <div >\r\n+    <el-card style=\"max-width: 480px\">\r\n+      <p v-for=\"o in 4\" :key=\"o\" class=\"text item\">{{ 'List item ' + o }}</p>\r\n+    </el-card>\r\n+  </div>\r\n </template>\r\n \r\n <script setup>\r\n import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n"
+                },
+                {
+                    "date": 1710527033646,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <template>\r\n   <div >\r\n     <el-card style=\"max-width: 480px\">\r\n-      <p v-for=\"o in 4\" :key=\"o\" class=\"text item\">{{ 'List item ' + o }}</p>\r\n+      \r\n     </el-card>\r\n   </div>\r\n </template>\r\n \r\n"
+                },
+                {
+                    "date": 1710527038926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <template>\r\n   <div >\r\n     <el-card style=\"max-width: 480px\">\r\n-      \r\n+      <h\r\n     </el-card>\r\n   </div>\r\n </template>\r\n \r\n"
+                },
+                {
+                    "date": 1710527046329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <template>\r\n   <div >\r\n     <el-card style=\"max-width: 480px\">\r\n-      <h\r\n+      <h3>签到任务</h3>\r\n     </el-card>\r\n   </div>\r\n </template>\r\n \r\n"
+                },
+                {
+                    "date": 1710527054291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n <template>\r\n   <div >\r\n     <el-card style=\"max-width: 480px\">\r\n       <h3>签到任务</h3>\r\n+      <p\r\n     </el-card>\r\n   </div>\r\n </template>\r\n \r\n"
+                },
+                {
+                    "date": 1710527060877,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,47 @@\n+<template>\r\n+  <div >\r\n+    <el-card style=\"max-width: 480px\">\r\n+      <h3>签到任务</h3>\r\n+      <p>已经</p>\r\n+    </el-card>\r\n+  </div>\r\n+</template>\r\n+\r\n+<script setup>\r\n+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n+import { useStore } from 'vuex';\r\n+import { useRoute, useRouter } from 'vue-router';\r\n+/**\r\n+* 仓库\r\n+*/\r\n+const store = useStore();\r\n+/**\r\n+* 路由对象\r\n+*/\r\n+const route = useRoute();\r\n+/**\r\n+* 路由实例\r\n+*/\r\n+const router = useRouter();\r\n+//console.log('1-开始创建组件-setup')\r\n+/**\r\n+* 数据部分\r\n+*/\r\n+const data = reactive({})\r\n+onBeforeMount(() => {\r\n+  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n+})\r\n+onMounted(() => {\r\n+  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n+})\r\n+watchEffect(()=>{\r\n+})\r\n+// 使用toRefs解构\r\n+// let { } = { ...toRefs(data) } \r\n+defineExpose({\r\n+  ...toRefs(data)\r\n+})\r\n+\r\n+</script>\r\n+<style scoped lang='less'>\r\n+</style>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1710527067381,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <template>\r\n   <div >\r\n     <el-card style=\"max-width: 480px\">\r\n       <h3>签到任务</h3>\r\n-      <p>已经</p>\r\n+      <p>已经连续签到</p>\r\n     </el-card>\r\n   </div>\r\n </template>\r\n \r\n@@ -43,52 +43,5 @@\n })\r\n \r\n </script>\r\n <style scoped lang='less'>\r\n-</style>\n-<template>\r\n-  <div >\r\n-    <el-card style=\"max-width: 480px\">\r\n-      <h3>签到任务</h3>\r\n-      <p\r\n-    </el-card>\r\n-  </div>\r\n-</template>\r\n-\r\n-<script setup>\r\n-import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\n-import { useStore } from 'vuex';\r\n-import { useRoute, useRouter } from 'vue-router';\r\n-/**\r\n-* 仓库\r\n-*/\r\n-const store = useStore();\r\n-/**\r\n-* 路由对象\r\n-*/\r\n-const route = useRoute();\r\n-/**\r\n-* 路由实例\r\n-*/\r\n-const router = useRouter();\r\n-//console.log('1-开始创建组件-setup')\r\n-/**\r\n-* 数据部分\r\n-*/\r\n-const data = reactive({})\r\n-onBeforeMount(() => {\r\n-  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n-})\r\n-onMounted(() => {\r\n-  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n-})\r\n-watchEffect(()=>{\r\n-})\r\n-// 使用toRefs解构\r\n-// let { } = { ...toRefs(data) } \r\n-defineExpose({\r\n-  ...toRefs(data)\r\n-})\r\n-\r\n-</script>\r\n-<style scoped lang='less'>\r\n </style>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1710527088375,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <template>\r\n   <div >\r\n     <el-card style=\"max-width: 480px\">\r\n       <h3>签到任务</h3>\r\n-      <p>已经连续签到</p><p>\r\n+      <p>已经连续签到</p><p></p>\r\n     </el-card>\r\n   </div>\r\n </template>\r\n \r\n"
+                },
+                {
+                    "date": 1710527124597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,10 @@\n /**\r\n * 数据部分\r\n */\r\n const data = reactive({\r\n-  cntTime: 0\r\n+  cntTime: 0,\r\n+  \r\n })\r\n onBeforeMount(() => {\r\n   //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n })\r\n"
+                }
+            ],
+            "date": 1710508525158,
+            "name": "Commit-0",
+            "content": "<template>\r\n  <div ></div>\r\n</template>\r\n\r\n<script setup>\r\nimport { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\nimport { useStore } from 'vuex';\r\nimport { useRoute, useRouter } from 'vue-router';\r\n/**\r\n* 仓库\r\n*/\r\nconst store = useStore();\r\n/**\r\n* 路由对象\r\n*/\r\nconst route = useRoute();\r\n/**\r\n* 路由实例\r\n*/\r\nconst router = useRouter();\r\n//console.log('1-开始创建组件-setup')\r\n/**\r\n* 数据部分\r\n*/\r\nconst data = reactive({})\r\nonBeforeMount(() => {\r\n  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n})\r\nonMounted(() => {\r\n  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n})\r\nwatchEffect(()=>{\r\n})\r\n// 使用toRefs解构\r\n// let { } = { ...toRefs(data) } \r\ndefineExpose({\r\n  ...toRefs(data)\r\n})\r\n\r\n</script>\r\n<style scoped lang='less'>\r\n</style>"
+        }
+    ]
+}

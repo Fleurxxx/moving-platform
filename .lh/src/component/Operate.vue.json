@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/component/Operate.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1710475888058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710476418150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,17 +50,17 @@\n   }\r\n   \r\n   </script>\r\n   \r\n-  <style lang=\"le\" scoped>\r\n+  <style lang=\"less\" scoped>\r\n   .el-dropdown {\r\n     position: absolute;\r\n     top: 50%;\r\n     transform: translateY(-50%);\r\n     right: 0;\r\n   }\r\n   .operation-warp {\r\n-    font-size: 16px;\r\n+    font-size: 96px;\r\n     color: #9499a0;\r\n     cursor: pointer;\r\n     position: relative;\r\n   }\r\n"
+                },
+                {
+                    "date": 1710476430882,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n   \r\n   <style lang=\"less\" scoped>\r\n   .el-dropdown {\r\n     position: absolute;\r\n-    top: 50%;\r\n+    top: 60%;\r\n     transform: translateY(-50%);\r\n     right: 0;\r\n   }\r\n   .operation-warp {\r\n"
+                },
+                {
+                    "date": 1710476439621,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,14 +53,14 @@\n   \r\n   <style lang=\"less\" scoped>\r\n   .el-dropdown {\r\n     position: absolute;\r\n-    top: 60%;\r\n+    top:40%;\r\n     transform: translateY(-50%);\r\n     right: 0;\r\n   }\r\n   .operation-warp {\r\n-    font-size: 96px;\r\n+    font-size: 56px;\r\n     color: #9499a0;\r\n     cursor: pointer;\r\n     position: relative;\r\n   }\r\n"
+                }
+            ],
+            "date": 1710475888058,
+            "name": "Commit-0",
+            "content": "<template>\r\n    <el-dropdown trigger=\"click\" @command=\"onCommand\">\r\n      <div class=\"operation-warp\">\r\n          <u-icon>\r\n            <svg viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\r\n              <path\r\n                d=\"M586.624 234.624a74.624 74.624 0 1 1-149.184 0 74.624 74.624 0 0 1 149.12 0z m0 554.624a74.624 74.624 0 1 1-149.248 0 74.624 74.624 0 0 1 149.248 0zM512 586.624a74.624 74.624 0 1 0 0-149.248 74.624 74.624 0 0 0 0 149.248z\"\r\n                fill=\"currentColor\"\r\n              ></path>\r\n            </svg>\r\n          </u-icon>\r\n        </div>\r\n      <template #dropdown>\r\n        <el-dropdown-menu>\r\n          <el-dropdown-item command=\"report\">举报</el-dropdown-item>\r\n          <el-dropdown-item command=\"remove\">删除</el-dropdown-item>\r\n          <el-dropdown-item divided command=\"copy\">复制</el-dropdown-item>\r\n        </el-dropdown-menu>\r\n      </template>\r\n    </el-dropdown>\r\n  </template>\r\n  <script setup lang=\"ts\">\r\n  import { useClipboard } from '@vueuse/core'\r\n  import { CommentApi, ElDropdown, ElDropdownItem, ElDropdownMenu, UToast} from 'undraw-ui'\r\n  \r\n  interface Props {\r\n    comment: CommentApi\r\n  }\r\n  \r\n  const props = defineProps<Props>()\r\n  \r\n  const emit = defineEmits<{\r\n    (e: 'remove', comment: CommentApi): void\r\n  }>()\r\n  \r\n  const { copy } = useClipboard()\r\n  \r\n  const onCommand = (command: any) => {\r\n    switch(command) {\r\n      case 'remove':\r\n        emit('remove', props.comment)\r\n        break\r\n      case 'report':\r\n        UToast({type: 'info', message: '举报成功: ' + props.comment.id})\r\n        break\r\n      case 'copy':\r\n        copy(props.comment.content)\r\n        UToast({type: 'info', message: '复制成功'})\r\n    }\r\n  }\r\n  \r\n  </script>\r\n  \r\n  <style lang=\"le\" scoped>\r\n  .el-dropdown {\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    right: 0;\r\n  }\r\n  .operation-warp {\r\n    font-size: 16px;\r\n    color: #9499a0;\r\n    cursor: pointer;\r\n    position: relative;\r\n  }\r\n  .operation-warp:hover {\r\n    color: #00aeec;\r\n  }\r\n  </style>"
+        }
+    ]
+}

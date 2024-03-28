@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/views/Activity.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1710744117267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1711009080532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,15 @@\n <!--\r\n  * @Author: Fleurxxx 984209872@qq.com\r\n  * @Date: 2024-03-15 20:16:40\r\n  * @LastEditors: Fleurxxx 984209872@qq.com\r\n- * @LastEditTime: 2024-03-18 14:41:57\r\n+ * @LastEditTime: 2024-03-21 16:18:00\r\n  * @FilePath: \\moving-platform\\src\\component\\activity.vue\r\n  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n -->\r\n <template>\r\n   <div >\r\n-    \r\n+    活动页面\r\n   </div>\r\n </template>\r\n \r\n <script setup>\r\n"
+                }
+            ],
+            "date": 1710744117267,
+            "name": "Commit-0",
+            "content": "<!--\r\n * @Author: Fleurxxx 984209872@qq.com\r\n * @Date: 2024-03-15 20:16:40\r\n * @LastEditors: Fleurxxx 984209872@qq.com\r\n * @LastEditTime: 2024-03-18 14:41:57\r\n * @FilePath: \\moving-platform\\src\\component\\activity.vue\r\n * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n-->\r\n<template>\r\n  <div >\r\n    \r\n  </div>\r\n</template>\r\n\r\n<script setup>\r\nimport { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';\r\nimport { useStore } from 'vuex';\r\nimport { useRoute, useRouter } from 'vue-router';\r\n/**\r\n* 仓库\r\n*/\r\nconst store = useStore();\r\n/**\r\n* 路由对象\r\n*/\r\nconst route = useRoute();\r\n/**\r\n* 路由实例\r\n*/\r\nconst router = useRouter();\r\n//console.log('1-开始创建组件-setup')\r\n/**\r\n* 数据部分\r\n*/\r\nconst data = reactive({})\r\nonBeforeMount(() => {\r\n  //console.log('2.组件挂载页面之前执行----onBeforeMount')\r\n})\r\nonMounted(() => {\r\n  //console.log('3.-组件挂载到页面之后执行-------onMounted')\r\n})\r\nwatchEffect(()=>{\r\n})\r\n// 使用toRefs解构\r\n// let { } = { ...toRefs(data) } \r\ndefineExpose({\r\n  ...toRefs(data)\r\n})\r\n\r\n</script>\r\n<style scoped lang='less'>\r\n</style>"
+        }
+    ]
+}

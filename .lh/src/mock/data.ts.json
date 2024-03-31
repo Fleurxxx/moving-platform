@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/mock/data.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1711694227759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1711694227759,
+            "name": "Commit-0",
+            "content": "// mockData.ts\r\n\r\n// 模拟热门文章数据\r\nexport const mockPopularPosts = [\r\n    { id: 1, title: '如何学习Vue.js' },\r\n    { id: 2, title: '深入理解JavaScript闭包' },\r\n    { id: 3, title: '使用React构建单页面应用' },\r\n    { id: 4, title: '前端工程化实践经验分享' },\r\n  ];\r\n  \r\n  // 模拟搜索热度榜数据\r\n  export const mockPopularSearchTerms = ['Vue.js教程', 'JavaScript闭包', 'React入门', '前端工程化'];\r\n  "
+        }
+    ]
+}

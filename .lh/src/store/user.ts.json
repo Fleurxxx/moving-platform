@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 28,
+            "activePatchIndex": 30,
             "patches": [
                 {
                     "date": 1710227597507,
@@ -120,6 +120,14 @@
                 {
                     "date": 1711368055573,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,11 +24,11 @@\n     return {\r\n       token: '',\r\n       id: '',\r\n       username: '',\r\n-      \r\n       state: false,\r\n       apply: 0,\r\n+      video: 0,\r\n       curnum: 1,\r\n       curtime:'',\r\n     };\r\n   },\r\n"
+                },
+                {
+                    "date": 1711784955747,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n interface FirstStoreState {\r\n   token: string;\r\n   id: string;\r\n   username: string;\r\n-  signtate: boolean;\r\n+  signState: boolean;\r\n   apply: number;\r\n   video: number; //0：视频，1：直播\r\n   curnum: number;\r\n   curtime: string;\r\n"
+                },
+                {
+                    "date": 1711784976752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,55 @@\n+/*\r\n+ * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git\r\n+ * @Date: 2023-12-12 20:47:51\r\n+ * @LastEditors: Fleurxxx 984209872@qq.com\r\n+ * @LastEditTime: 2024-03-25 20:00:07\r\n+ * @FilePath: \\hope-enroll\\src\\store\\user.ts\r\n+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\r\n+ */\r\n+import { defineStore } from 'pinia';\r\n+\r\n+interface FirstStoreState {\r\n+  token: string;\r\n+  id: string;\r\n+  username: string;\r\n+  signState: boolean; //签到状态，false未签，true签了\r\n+  apply: number;\r\n+  video: number; //0：视频，1：直播\r\n+  curnum: number;\r\n+  curtime: string;\r\n+}\r\n+\r\n+export const user = defineStore('first', {\r\n+  state: (): FirstStoreState => {\r\n+    return {\r\n+      token: '',\r\n+      id: '',\r\n+      username: '',\r\n+      state: false,\r\n+      apply: 0,\r\n+      video: 0,\r\n+      curnum: 1,\r\n+      curtime:'',\r\n+    };\r\n+  },\r\n+  getters: {\r\n+    // 在需要的时候添加你的 getter\r\n+  },\r\n+  actions: {\r\n+    // 在需要的时候添加你的 action\r\n+  },\r\n+  persist: {\r\n+    enabled: true, // 开启数据缓存\r\n+    strategies: [\r\n+      {\r\n+        // key: 'myuser',\r\n+        storage: sessionStorage, // 默认是sessionStorage\r\n+        paths: ['id','username','state','apply','video','curnum','curtime']\r\n+      },\r\n+      // {\r\n+      //   storage: localStorage, // 默认是sessionStorage\r\n+      //   paths: ['token']\r\n+      // }\r\n+    ],\r\n+  }\r\n+});\r\n"
                 }
             ],
             "date": 1710227597507,

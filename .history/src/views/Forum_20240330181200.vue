@@ -1,0 +1,198 @@
+<!--
+ * @Author: Fleurxxx 984209872@qq.com
+ * @Date: 2024-03-29 14:13:21
+ * @LastEditors: Fleurxxx 984209872@qq.com
+ * @LastEditTime: 2024-03-30 18:11:57
+ * @FilePath: \moving-platform\src\views\Forum.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<template>
+  <div class="box">
+    <div class="container">
+      <div class="left">
+        <img class="l_img" src="@/assets/image/common/d7e559c06b034f18a18b078fd8629c98.jpg" />
+        <el-card class="l_card">
+
+        </el-card>
+      </div>
+      <div class="right">
+        <div class="r_sign">
+          <el-card v-if="storeUser.signState">
+            <h2>已经连续签到&nbsp; {{data.day}} &nbsp;天</h2>
+            <p>点亮在论坛的每一天</p>
+            <el-button class="r_sign_but" type="primary" plain disabled>已签到</el-button>
+          </el-card>
+          <el-button v-else class="r_sign_button" type="primary" size="large" @click="enter">
+            <img class="r_sign_img" src="@/assets/image/common/金币.png" />
+            立即签到
+          </el-button>
+        </div>
+        <div class="r_hot">
+          <el-card>
+            <h3>活动资讯</h3>
+            <div v-for="(item,index) in hot" :key="index">
+              <p><span :style="{ color: item.color }">{{ index+1 }}</span> &nbsp;{{ item.content }}</p>
+            </div>
+          </el-card>
+        </div>
+        <div class="r_advertisement">
+          <el-card>
+            <el-icon class="r_advertisement_close"><Close /></el-icon>
+            <img src="@/assets/image/common/20230817-b04c7c13.jpg" />
+            <el-tag class="r_advertisement_tag" type="info">广告</el-tag>
+          </el-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';
+import { Delete, Edit, Search, Share, Upload,Download } from '@element-plus/icons-vue'
+import { user } from '@/store/user';
+import { useRoute, useRouter } from 'vue-router';
+import Article from '@/component/Article'
+import VideoRecommendationCard from '@/component/VideoRecommendationCard.vue';
+
+const storeUser = user();
+const route = useRoute();
+const router = useRouter();
+const data = reactive({
+  day:'1',
+})
+const hot = ref([
+  {
+    color:'#fe3e29',
+    content:'2023西湖论剑·数字安全大会举办',
+  },
+  {
+    color:'#fe3e29',
+    content:'西湖论剑暨安恒信息年度新品发布会在杭州举行',
+  },
+  {
+    color:'#fe3e29',
+    content:'“新十年”扬帆起航2023西湖论剑·数字安全大会举办',
+  },
+  {
+    color:'#5e7987',
+    content:'2023西湖论剑·数字安全大会│车联网如何系牢“安全”带?',
+  },
+  {
+    color:'#5e7987',
+    content:'从网络安全扩展到数字安全2023西湖论剑·数字安全大会召开',
+  },
+  {
+    color:'#5e7987',
+    content:'聚焦|2023西湖论剑·数字安全大会举办',
+  },
+])
+
+function enter(){
+  storeUser.video = 0;
+  router.push("/integral");
+}
+// 关闭卡片
+const hideCard = () => {
+  
+};
+
+
+onBeforeMount(() => {
+  
+})
+onMounted(() => {
+    data.name = '安恒信息';
+    data.intruction = '杭州安恒信息技术股份有限公司（简称：安恒信息）成立于2007年，于2019年登陆科创板，是网络安全行业发展速度最快的上市公司之一。作为行业领导者，安恒信息秉承“构建安全可信的数字世界”的企业使命，以数字经济的安全基石为企业定位，形成了云安全、大数据安全、物联网安全、智慧城市安全、工业控制系统安全及工业互联网安全五大市场战略，凭借强大的研发实力和持续的产品创新，完成覆盖网络信息安全全生命周期的产品、服务及解决方案体系，作为国家级核心安保单位，参与了近乎全部国家重大活动网络安保，实现零失误。2020年11月23日，安恒信息正式成为2022年杭州第19届亚运会网络安全类官方合作伙伴，这也是国际大型综合性赛事网络信息安全类最高层级合作。';
+})
+watchEffect(()=>{
+})
+
+defineExpose({
+  ...toRefs(data)
+})
+
+</script>
+<style scoped lang='less'>
+.box{
+  padding:1rem 3rem;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position-y: bottom;
+  background-image: url('@/assets/image/common/list_bg_image.png');
+}
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+.left{
+  width:70%;
+}
+.right{
+  width:30%;
+}
+
+.l_img{
+  width:95%;
+}
+.l_card{
+  width:95%;
+  margin-top:0.2rem;
+}
+.r_sign{
+  width:100%;
+  position: relative;
+  margin-bottom:0.2rem;
+  h2{
+    padding-bottom: 0.08rem;
+  }
+}
+.r_sign_but{
+  position:absolute;
+  right:7%;
+  top: 35%;
+}
+.r_sign_button{
+  width:100%;
+  height: 0.7rem;
+  ::v-deep span{
+    font-size:0.28rem;
+  }
+}
+.r_sign_img{
+  width:0.4rem;
+}
+.r_hot{
+  width:100%;
+  margin-bottom:0.2rem;
+  h3{
+    padding-bottom: 0.09rem;
+  }
+  p{
+    line-height: 0.4rem;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* 文字在同一行 */
+    overflow: hidden; /* 隐藏超出容器的文本 */
+    text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+  }
+}
+.r_advertisement{
+  position: relative;
+  ::v-deep .el-card__body {
+      padding: 0;
+  }
+  img{
+    width:100%;
+  }
+}
+.r_advertisement_close{
+  position: absolute;
+  top:0.2rem;
+  right: 0.2rem;
+}
+.r_advertisement_tag{
+  position: absolute;
+  bottom:0.1rem;
+  right: 0.1rem;
+}
+</style>

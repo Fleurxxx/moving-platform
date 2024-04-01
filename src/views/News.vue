@@ -1,3 +1,4 @@
+<!-- 媒体中心 -->
 <template>
   <div class="box">
     <div class="header">
@@ -5,69 +6,194 @@
       <img class="banner-img" src="@/assets/image/common/banner1.png" />
     </div>
     <div class="center">
-      
+      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+        <el-tab-pane label="新闻中心" name="first">
+          <news-item
+            v-for="item in state.newsData"
+            :key="item.title"
+            :newsItem="item"
+          ></news-item>
+        </el-tab-pane>
+        <el-tab-pane label="精彩图片" name="second" class="img-box">
+          <img-item
+            v-for="item in state.imgData"
+            :key="item.id"
+            :imgItem="item"
+          ></img-item>
+        </el-tab-pane>
+        <el-tab-pane label="精彩视频" name="third" class="img-box">
+          <video-item
+            v-for="item in state.videoData"
+            :key="item.title"
+            :videoData="item"
+          ></video-item>
+        </el-tab-pane>
+      </el-tabs>
     </div>
-    <!-- <div class="foot">
-      <img class="banner-img" src="@/assets/image/common/banner4.png" />
-    </div> -->
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';
-import { Delete, Edit, Search, Share, Upload,Download } from '@element-plus/icons-vue'
-import { useRoute, useRouter } from 'vue-router';
-import Article from '@/component/Article'
-import VideoRecommendationCard from '@/component/VideoRecommendationCard.vue';
-
-const route = useRoute();
-const router = useRouter();
-const data = reactive({
- 
-})
+import { reactive, ref } from "vue";
+import newsItem from "../component/NewsItem.vue";
+import imgItem from "../component/ImgItem.vue";
+import videoItem from "../component/VideoItem.vue";
 
 
-onBeforeMount(() => {
-  
-})
-onMounted(() => {
-    data.name = '安恒信息';
-    data.intruction = '杭州安恒信息技术股份有限公司（简称：安恒信息）成立于2007年，于2019年登陆科创板，是网络安全行业发展速度最快的上市公司之一。作为行业领导者，安恒信息秉承“构建安全可信的数字世界”的企业使命，以数字经济的安全基石为企业定位，形成了云安全、大数据安全、物联网安全、智慧城市安全、工业控制系统安全及工业互联网安全五大市场战略，凭借强大的研发实力和持续的产品创新，完成覆盖网络信息安全全生命周期的产品、服务及解决方案体系，作为国家级核心安保单位，参与了近乎全部国家重大活动网络安保，实现零失误。2020年11月23日，安恒信息正式成为2022年杭州第19届亚运会网络安全类官方合作伙伴，这也是国际大型综合性赛事网络信息安全类最高层级合作。';
-})
-watchEffect(()=>{
-})
 
-defineExpose({
-  ...toRefs(data)
-})
+const activeName = ref("second");
 
+const state = reactive({
+  newsData: [
+    {
+      title: "【重磅干货】大家都关心的嘉宾PPT下载指南来啦！",
+      msg: "指路贴来啦！大家都关心的嘉宾PPT下载指南在这里！一图解锁西湖论剑官网;小程序下载路径，看众多专家真知灼见，干货满满，引领行业思辨！",
+      date: "2023-05-12",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/0ceb338a21e043a69ba41e0b164ea739.jpg",
+      host: "西湖论剑",
+    },
+    {
+      title: "【重磅干货】大家都关心的嘉宾PPT下载指南来啦！",
+      msg: "指路贴来啦！大家都关心的嘉宾PPT下载指南在这里！一图解锁西湖论剑官网;小程序下载路径，看众多专家真知灼见，干货满满，引领行业思辨！",
+      date: "2023-05-12",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/0ceb338a21e043a69ba41e0b164ea739.jpg",
+      host: "西湖论剑",
+    },
+    {
+      title: "【重磅干货】大家都关心的嘉宾PPT下载指南来啦！",
+      msg: "指路贴来啦！大家都关心的嘉宾PPT下载指南在这里！一图解锁西湖论剑官网;小程序下载路径，看众多专家真知灼见，干货满满，引领行业思辨！",
+      date: "2023-05-12",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/0ceb338a21e043a69ba41e0b164ea739.jpg",
+      host: "西湖论剑",
+    },
+  ],
+  imgData:[
+    {
+      id:1,
+      title:'MSS安全托管运营服务论坛-精彩瞬间',
+      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+    },
+    {
+      id:1,
+      title:'MSS安全托管运营服务论坛-精彩瞬间',
+      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+    },
+    {
+      id:1,
+      title:'MSS安全托管运营服务论坛-精彩瞬间',
+      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+    },
+    {
+      id:1,
+      title:'MSS安全托管运营服务论坛-精彩瞬间',
+      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+    },
+    {
+      id:1,
+      title:'MSS安全托管运营服务论坛-精彩瞬间',
+      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+    },
+    {
+      id:1,
+      title:'MSS安全托管运营服务论坛-精彩瞬间',
+      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+    },
+    {
+      id:1,
+      title:'MSS安全托管运营服务论坛-精彩瞬间',
+      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+    },
+  ],
+  videoData:[
+    {
+      title:'主论坛-《2023数字安全能力洞察报告》发布仪式',
+      content:'亚运大使团祝福',
+      view:2300,
+      img:'	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg'
+    },
+    {
+      title:'主论坛-《2023数字安全能力洞察报告》发布仪式',
+      content:'亚运大使团祝福',
+      view:2300,
+      img:'	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg'
+    },
+    {
+      title:'主论坛-《2023数字安全能力洞察报告》发布仪式',
+      content:'亚运大使团祝福',
+      view:2300,
+      img:'	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg'
+    },
+    {
+      title:'主论坛-《2023数字安全能力洞察报告》发布仪式',
+      content:'亚运大使团祝福',
+      view:2300,
+      img:'	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg'
+    },
+  ]
+});
+
+const handleClick = (tab, event) => {
+  console.log(tab, event);
+};
 </script>
-<style scoped lang='less'>
-.box{
+<style scoped lang="less">
+.demo-tabs {
+  font-size: 50px;
+}
+.el-tabs {
+  --el-tabs-header-height: 120px;
+  padding-left: 390px;
+}
+::v-deep .el-tabs__item {
+  font-size: 60px;
+  font-weight: bold;
+  padding-bottom: 50px;
+  margin-right: 10px; /* 右边距 */
+  margin-left: 20%; /* 左边距 */
+}
+::v-deep .el-tabs__active-bar {
+  height: 8px;
+}
+::v-deep .el-tabs__nav-wrap:after {
+  background-color: transparent;
+}
+
+.box {
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position-y: bottom;
-  background-image: url('@/assets/image/common/list_bg_image.png');
+  background-image: url("@/assets/image/common/list_bg_image.png");
 }
-.header{
-  h1{
+::v-deep .el-tabs__nav {
+  margin-top: 100px;
+  margin-left: 18%;
+}
+.header {
+  h1 {
     position: absolute;
     left: 20%;
-    top:25%;
-    font-size:0.7rem;
+    top: 25%;
+    font-size: 0.7rem;
     color: #fff;
   }
 }
-.banner-img{
-  width:100%;
+.banner-img {
+  width: 100%;
   height: 3.5rem;
 }
-.foot{
+.foot {
   position: relative;
-  bottom:0;
+  bottom: 0;
 }
-.center{
-  padding: 1rem 2rem;
+.center {
 }
-
+.img-box{
+  display: flex;
+  flex-direction: row;
+  gap:60px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: 5%;
+  }
 </style>

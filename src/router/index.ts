@@ -13,17 +13,6 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/home", // 空路径，即默认显示的子路由
         component: () => import("@/views/Home.vue"),
-        // redirect: "/main/arithmetic",
-        // children: [
-        //   {
-        //     path: "/main/in",
-        //     component: () => import("../views/Introduction.vue"),
-        //   },
-        //   {
-        //     path: "/main/arithmetic",
-        //     component: () => import("../views/Arithmetic.vue"),
-        //   },
-        // ],
       },
       {
         path: "/introduction", //会议介绍
@@ -98,7 +87,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes,
 });
 

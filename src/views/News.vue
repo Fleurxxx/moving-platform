@@ -20,6 +20,7 @@
             v-for="item in state.imgData"
             :key="item.id"
             :imgItem="item"
+            @click="imgPreview(item)"
           ></img-item>
         </el-tab-pane>
         <el-tab-pane label="精彩视频" name="third" class="img-box">
@@ -31,6 +32,11 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <image-preview-vue
+      v-model="showPreview"
+      :image="state.imagePreview"
+      @close="showPreview = false"
+    ></image-preview-vue>
   </div>
 </template>
 
@@ -40,10 +46,11 @@ import newsItem from "../component/NewsItem.vue";
 import imgItem from "../component/ImgItem.vue";
 import videoItem from "../component/VideoItem.vue";
 import router from "@/router";
-
-
+import imagePreviewVue from "../component/ImagePreview.vue";
 
 const activeName = ref("second");
+
+const showPreview = ref(false);
 
 const state = reactive({
   newsData: [
@@ -69,70 +76,76 @@ const state = reactive({
       host: "西湖论剑",
     },
   ],
-  imgData:[
+  imgData: [
     {
-      id:1,
-      title:'MSS安全托管运营服务论坛-精彩瞬间',
-      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+      id: 1,
+      title: "MSS安全托管运营服务论坛-精彩瞬间",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg",
     },
     {
-      id:1,
-      title:'MSS安全托管运营服务论坛-精彩瞬间',
-      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+      id: 1,
+      title: "MSS安全托管运营服务论坛-精彩瞬间",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg",
     },
     {
-      id:1,
-      title:'MSS安全托管运营服务论坛-精彩瞬间',
-      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+      id: 1,
+      title: "MSS安全托管运营服务论坛-精彩瞬间",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg",
     },
     {
-      id:1,
-      title:'MSS安全托管运营服务论坛-精彩瞬间',
-      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+      id: 1,
+      title: "MSS安全托管运营服务论坛-精彩瞬间",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg",
     },
     {
-      id:1,
-      title:'MSS安全托管运营服务论坛-精彩瞬间',
-      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+      id: 1,
+      title: "MSS安全托管运营服务论坛-精彩瞬间",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg",
     },
     {
-      id:1,
-      title:'MSS安全托管运营服务论坛-精彩瞬间',
-      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+      id: 1,
+      title: "MSS安全托管运营服务论坛-精彩瞬间",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg",
     },
     {
-      id:1,
-      title:'MSS安全托管运营服务论坛-精彩瞬间',
-      img:'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg'
+      id: 1,
+      title: "MSS安全托管运营服务论坛-精彩瞬间",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg",
     },
   ],
-  videoData:[
+  videoData: [
     {
-      title:'主论坛-《2023数字安全能力洞察报告》发布仪式',
-      content:'亚运大使团祝福',
-      view:2300,
-      img:'	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg'
+      title: "主论坛-《2023数字安全能力洞察报告》发布仪式",
+      content: "亚运大使团祝福",
+      view: 2300,
+      img: "	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg",
     },
     {
-      title:'主论坛-《2023数字安全能力洞察报告》发布仪式',
-      content:'亚运大使团祝福',
-      view:2300,
-      img:'	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg'
+      title: "主论坛-《2023数字安全能力洞察报告》发布仪式",
+      content: "亚运大使团祝福",
+      view: 2300,
+      img: "	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg",
     },
     {
-      title:'主论坛-《2023数字安全能力洞察报告》发布仪式',
-      content:'亚运大使团祝福',
-      view:2300,
-      img:'	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg'
+      title: "主论坛-《2023数字安全能力洞察报告》发布仪式",
+      content: "亚运大使团祝福",
+      view: 2300,
+      img: "	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg",
     },
     {
-      title:'主论坛-《2023数字安全能力洞察报告》发布仪式',
-      content:'亚运大使团祝福',
-      view:2300,
-      img:'	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg'
+      title: "主论坛-《2023数字安全能力洞察报告》发布仪式",
+      content: "亚运大使团祝福",
+      view: 2300,
+      img: "	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg",
     },
-  ]
+  ],
+  imagePreview:{}
 });
+
+const imgPreview = (item) => {
+  showPreview.value = true;
+  state.imagePreview = item;
+}
 
 const handleClick = (tab, event) => {
   console.log(tab, event);
@@ -189,13 +202,13 @@ const handleClick = (tab, event) => {
 }
 .center {
 }
-.img-box{
+.img-box {
   display: flex;
   flex-direction: row;
-  gap:60px;
+  gap: 60px;
   flex-wrap: wrap;
   align-items: center;
   margin-top: 50px;
   margin-left: 5%;
-  }
+}
 </style>

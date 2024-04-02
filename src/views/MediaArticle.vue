@@ -145,7 +145,7 @@
     background-image: url('../assets/image/common/banner2.png');
     height: 500px;
     width: 100vw;
-    color: #fff;
+    color: #ffffffc4;
     font-size: 90px;
     padding: 0.7rem;
     padding-left: 3rem;

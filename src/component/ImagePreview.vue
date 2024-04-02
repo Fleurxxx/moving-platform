@@ -1,13 +1,12 @@
 <!-- 显示对象预览对话框 -->
 <template>
   <el-dialog
-    :show-close="false"
     style="
       background-color: transparent;
       border: 0;
       box-shadow: none;
       margin-top: 1%;
-      height: 100vh;
+      height: 90vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -15,53 +14,23 @@
     class="content-box"
     append-to-body
   >
-    <div
-      v-show="
-        (objectInfo.ext == 2 || objectInfo.ext == 4) &&
-        objectInfo.storageLevel == 1 &&
-        fileStatus == '正常'
-      "
-      class="preview-box"
-      v-loading="loading"
-    >
-      <img
-        ref="img"
-        :src="src"
-        v-if="objectInfo.ext == 4"
-        :style="{ transform: `scale(${scale})` }"
-      />
-      <video
-        :src="src"
-        class="video"
-        v-if="objectInfo.ext == 2"
-        controls="true"
-        autoplay
-      ></video>
-      <iframe
-        v-if="objectInfo.ext == 6 || objectInfo.ext == 5 || objectInfo.ext == 1"
-        :src="src"
-        width="100%"
-        height="100%"
-        style="background: white"
-      >
-      </iframe>
+    <div class="preview-box">
+      <div class="img-box">
+        <img
+          ref="img"
+          :src="image.img"
+          :style="{ transform: `scale(${scale})` }"
+        />
+        <div class="look-box-msg">
+          {{ image.title }}
+        </div>
+      </div>
       <el-button class="close" @click="close" type="info" circle
         ><el-icon><CloseBold /></el-icon>
       </el-button>
     </div>
-    <div
-      class="look-box-msg"
-      v-show="
-        objectInfo.storageLevel != 1 ||
-        fileStatus != '正常' ||
-        (objectInfo.ext != 2 && objectInfo.ext != 4) ||
-        objectInfo.secret != null
-      "
-    >
-      <el-icon color="rgb(255,203,3)"><InfoFilled /></el-icon
-      >{{ objectInfoMsg }}
-    </div>
-    <div class="btnList" v-show="objectInfo.ext == 4">
+
+    <div class="btnList">
       <el-button link class="btn" style="height: 50px" @click="zoomOut">
         <el-icon class="icon" size="30px"><ZoomOut /></el-icon>
       </el-button>
@@ -71,6 +40,8 @@
       <el-button link class="btn" @click="downLoad"
         ><el-icon size="30px" class="icon"><Download /></el-icon
       ></el-button>
+      <el-button link class="btn" @click="downLoad"
+        ><img class="icon" src="..\..\public\static\icon\编辑.png" /></el-button>
     </div>
   </el-dialog>
 </template>
@@ -78,7 +49,17 @@
 <script setup>
 import { computed, onMounted, ref } from "vue";
 
-const loading = ref(true);
+const props = defineProps({
+  image: {
+    type: Object,
+    default: () => ({
+      id: 1,
+      title: "MSS安全托管运营服务论坛-精彩瞬间",
+      img: "https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/8f9165a37c6e495fa2c3d87e3ca40292.jpg",
+    }),
+  },
+});
+
 const emit = defineEmits(["close"]);
 
 /* 放大缩小 */
@@ -93,17 +74,6 @@ const zoomOut = () => {
   img.value.style.transform = `scale(${scale.value})`;
 };
 
-const prop = defineProps({
-  bucketName: {
-    type: String,
-  },
-  objectInfo: {
-    type: Object,
-  },
-  fileStatus: {
-    type: String,
-  },
-});
 /* 下载文件 */
 const downLoad = () => {
   const xhr = new XMLHttpRequest();
@@ -125,12 +95,8 @@ const src = ref("");
 
 const close = () => {
   src.value = "";
-  loading.value = true;
   emit("close");
 };
-
-
-
 </script>
 
 <style scoped>
@@ -140,11 +106,16 @@ const close = () => {
   align-items: center;
   max-height: 100vh;
 }
-.preview-box > img {
+.img-box {
+  position: relative;
+  overflow: hidden;
+}
+.img-box > img {
   object-fit: contain;
   width: 100%;
   height: 100%;
   transition: transform 0.3s;
+  object-fit: fill;
 }
 .video {
   object-fit: contain;
@@ -157,9 +128,19 @@ const close = () => {
 }
 
 .look-box-msg {
-  background-color: #fff7d1;
-  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #868686
+  ); /* 从上到下渐变的背景色 */
   padding: 30px 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 40px;
+  color: #fff;
+  right: 0;
+  padding: 70px 100px;
 }
 .close {
   position: fixed;
@@ -168,6 +149,7 @@ const close = () => {
 }
 .icon {
   color: #fff;
+  height: 100px;
 }
 .btn {
   height: 50px;
@@ -177,13 +159,16 @@ const close = () => {
 }
 .btnList {
   position: fixed;
-  bottom: 20px;
+  bottom: 50px;
   border-radius: 10px;
-  height: 50px;
+  height: 120px;
   background-color: #4b4c53;
-  left: 43vw;
-  padding: 0px 25px;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 25px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 10px;
 }
 </style>

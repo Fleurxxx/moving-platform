@@ -89,6 +89,10 @@ const routes: Array<RouteRecordRaw> = [
         path: "/videoItem", //图片列表组件
         component: () => import("@/component/VideoItem.vue"),
       },
+      {
+        path: "/mediaArticle", //图片列表组件
+        component: () => import("@/views/MediaArticle.vue"),
+      },
     ],
   },
   {

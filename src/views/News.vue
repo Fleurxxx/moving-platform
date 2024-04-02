@@ -12,6 +12,7 @@
             v-for="item in state.newsData"
             :key="item.title"
             :newsItem="item"
+            @click="router.push('/mediaArticle')"
           ></news-item>
         </el-tab-pane>
         <el-tab-pane label="精彩图片" name="second" class="img-box">
@@ -38,6 +39,7 @@ import { reactive, ref } from "vue";
 import newsItem from "../component/NewsItem.vue";
 import imgItem from "../component/ImgItem.vue";
 import videoItem from "../component/VideoItem.vue";
+import router from "@/router";
 
 
 

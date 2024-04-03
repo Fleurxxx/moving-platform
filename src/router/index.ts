@@ -97,6 +97,10 @@ const routes: Array<RouteRecordRaw> = [
         path: "/imgPreview", //图片预览组件
         component: () => import("@/component/ImagePreview.vue"),
       },
+      {
+        path: "/imageProcessing", //图片预览组件
+        component: () => import("@/views/ImageProcessing.vue"),
+      }
     ],
   },
   {

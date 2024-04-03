@@ -40,13 +40,14 @@
       <el-button link class="btn" @click="downLoad"
         ><el-icon size="30px" class="icon"><Download /></el-icon
       ></el-button>
-      <el-button link class="btn" @click="downLoad"
+      <el-button link class="btn" @click="update"
         ><img class="icon" src="..\..\public\static\icon\编辑.png" /></el-button>
     </div>
   </el-dialog>
 </template>
 
 <script setup>
+import router from "@/router";
 import { computed, onMounted, ref } from "vue";
 
 const props = defineProps({
@@ -97,6 +98,10 @@ const close = () => {
   src.value = "";
   emit("close");
 };
+
+const update = () => {
+  router.push('/imageProcessing')
+}
 </script>
 
 <style scoped>
@@ -149,7 +154,7 @@ const close = () => {
 }
 .icon {
   color: #fff;
-  height: 100px;
+  height: 70px;
 }
 .btn {
   height: 50px;

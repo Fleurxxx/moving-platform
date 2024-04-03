@@ -9,9 +9,6 @@
       <convention />
       <pack-view />
     </div>
-    <!-- <div class="foot"> -->
-    <!-- <img class="banner-img" src="@/assets/image/common/foot_banner.jpg" /> -->
-    <!-- </div> -->
   </div>
 </template>
 
@@ -61,18 +58,11 @@ defineExpose({
 });
 </script>
 <style scoped lang="less">
-.introduction {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  position: relative; /* 相对定位，以便设置子元素的 z-index */
-  height: 100vh; /* 使用视口高度填满整个屏幕 */
-}
 .header {
   h1 {
     position: absolute;
     left: 10%;
-    top: 13%;
+    top: 20%;
     font-size: 0.7rem;
     color: RGB(41, 204, 217);
   }

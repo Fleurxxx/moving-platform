@@ -37,7 +37,7 @@ const store = useStore();
 const route = useRoute();
 const router = useRouter();
 const data = reactive({})
-const url = ref('https://outin-f6c3661ae52711eeaca900163e32a995.oss-cn-shanghai.aliyuncs.com/sv/1204624-18e761b8dde/1204624-18e761b8dde.mp4?Expires=1711466788&OSSAccessKeyId=LTAIxSaOfEzCnBOj&Signature=cVQFGUIy4sBO28Ify6JE%2FXM9DpA%3D');
+const url = ref('https://outin-f6c3661ae52711eeaca900163e32a995.oss-cn-shanghai.aliyuncs.com/sv/456b34da-18e7fe1ceab/456b34da-18e7fe1ceab.mp4?Expires=1711878577&OSSAccessKeyId=LTAIxSaOfEzCnBOj&Signature=pKMLHFx1PLuwj03RZsiQ9qw5VOk%3D');
 
 function enter(){
   router.push("/exhibitor/exhibition");

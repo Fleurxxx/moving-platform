@@ -108,7 +108,7 @@ export default {
   }
 }
 </script>
-  <style> 
+  <style > 
   .el-divider{
     background-color: rgb(84, 92, 100);
   }

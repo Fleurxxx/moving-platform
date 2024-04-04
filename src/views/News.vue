@@ -170,8 +170,42 @@ const handleClick = (tab, event) => {
   position: relative;
   bottom: 0;
 }
-.center {
+.demo-tabs {
+  font-size: 50px;
 }
+.el-tabs {
+  --el-tabs-header-height: 120px;
+  padding-left: 390px;
+}
+::v-deep .el-tabs__item {
+  font-size: 60px;
+  font-weight: bold;
+  padding-bottom: 50px;
+  margin-right: 10px; /* 右边距 */
+  margin-left: 20%; /* 左边距 */
+}
+::v-deep .el-tabs__active-bar {
+  height: 8px;
+}
+::v-deep .el-tabs__nav-wrap:after {
+  background-color: transparent;
+}
+
+.box {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position-y: bottom;
+  background-image: url("@/assets/image/common/list_bg_image.png");
+}
+::v-deep .el-tabs__nav {
+  margin-top: 100px;
+  margin-left: 18%;
+}
+.foot {
+  position: relative;
+  bottom: 0;
+}
+
 .img-box {
   display: flex;
   flex-direction: row;
@@ -180,5 +214,16 @@ const handleClick = (tab, event) => {
   align-items: center;
   margin-top: 50px;
   margin-left: 5%;
+  margin-bottom: 150px;
+}
+::v-deep .el-tabs__item.is-active,
+::v-deep .el-tabs__item:hover {
+  color: RGB(45, 177, 186);
+}
+.center{
+  
+}
+::v-deep .el-tabs__active-bar {
+  background-color: RGB(45, 177, 186);
 }
 </style>

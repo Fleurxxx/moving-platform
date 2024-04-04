@@ -28,6 +28,7 @@
             v-for="item in state.videoData"
             :key="item.title"
             :videoData="item"
+            @click="router.push('/schedule/video')"
           ></video-item>
         </el-tab-pane>
       </el-tabs>

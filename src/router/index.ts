@@ -93,6 +93,30 @@ const routes: Array<RouteRecordRaw> = [
         path: "/person",
         component: () => import("@/views/Person.vue"),
       },
+      {
+        path: "/newsItem", //新闻列表组件
+        component: () => import("@/component/NewsItem.vue"),
+      },
+      {
+        path: "/imgItem", //图片列表组件
+        component: () => import("@/component/ImgItem.vue"),
+      },
+      {
+        path: "/videoItem", //视频列表组件
+        component: () => import("@/component/VideoItem.vue"),
+      },
+      {
+        path: "/mediaArticle", //媒体中心新闻详情
+        component: () => import("@/views/MediaArticle.vue"),
+      },
+      {
+        path: "/imgPreview", //图片预览组件
+        component: () => import("@/component/ImagePreview.vue"),
+      },
+      {
+        path: "/imageProcessing", //图片预览组件
+        component: () => import("@/views/ImageProcessing.vue"),
+      }
     ],
   },
   {

@@ -1,57 +1,35 @@
-<!-- 媒体中心 -->
 <template>
-  <div class="box">
-    <div class="header">
-      <h1>媒体中心</h1>
-      <img class="banner-img" src="@/assets/image/common/banner1.png" />
-    </div>
-    <div class="center">
-      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane label="新闻中心" name="first">
-          <news-item
-            v-for="item in state.newsData"
-            :key="item.title"
-            :newsItem="item"
-            @click="router.push('/mediaArticle')"
-          ></news-item>
-        </el-tab-pane>
-        <el-tab-pane label="精彩图片" name="second" class="img-box">
-          <img-item
-            v-for="item in state.imgData"
-            :key="item.id"
-            :imgItem="item"
-            @click="imgPreview(item)"
-          ></img-item>
-        </el-tab-pane>
-        <el-tab-pane label="精彩视频" name="third" class="img-box">
-          <video-item
-            v-for="item in state.videoData"
-            :key="item.title"
-            :videoData="item"
-            @click="router.push('/schedule/video')"
-          ></video-item>
-        </el-tab-pane>
-      </el-tabs>
-    </div>
-    <image-preview-vue
-      v-model="showPreview"
-      :image="state.imagePreview"
-      @close="showPreview = false"
-    ></image-preview-vue>
-  </div>
+  <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+    <el-tab-pane label="新闻中心" name="first">
+      <news-item
+        v-for="item in state.newsData"
+        :key="item.title"
+        :newsItem="item"
+      ></news-item>
+    </el-tab-pane>
+    <el-tab-pane label="精彩图片" name="second" class="img-box">
+      <img-item
+        v-for="item in state.imgData"
+        :key="item.id"
+        :imgItem="item"
+      ></img-item>
+    </el-tab-pane>
+    <el-tab-pane label="精彩视频" name="third" class="img-box">
+      <video-item
+        v-for="item in state.videoData"
+        :key="item.title"
+        :videoData="item"
+      ></video-item>
+    </el-tab-pane>
+  </el-tabs>
 </template>
-
 <script setup>
 import { reactive, ref } from "vue";
 import newsItem from "../component/NewsItem.vue";
 import imgItem from "../component/ImgItem.vue";
 import videoItem from "../component/VideoItem.vue";
-import router from "@/router";
-import imagePreviewVue from "../component/ImagePreview.vue";
 
 const activeName = ref("second");
-
-const showPreview = ref(false);
 
 const state = reactive({
   newsData: [
@@ -140,36 +118,13 @@ const state = reactive({
       img: "	https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/a6169d65c3d2410bb93dca53ae073844.jpg",
     },
   ],
-  imagePreview:{}
 });
-
-const imgPreview = (item) => {
-  showPreview.value = true;
-  state.imagePreview = item;
-}
 
 const handleClick = (tab, event) => {
   console.log(tab, event);
 };
 </script>
 <style scoped lang="less">
-.header {
-  h1 {
-    position: absolute;
-    left: 20%;
-    top: 25%;
-    font-size: 0.7rem;
-    color: #fff;
-  }
-}
-.banner-img {
-  width: 100%;
-  height: 3.5rem;
-}
-.foot {
-  position: relative;
-  bottom: 0;
-}
 .demo-tabs {
   font-size: 50px;
 }
@@ -214,14 +169,10 @@ const handleClick = (tab, event) => {
   align-items: center;
   margin-top: 50px;
   margin-left: 5%;
-  margin-bottom: 150px;
 }
 ::v-deep .el-tabs__item.is-active,
 ::v-deep .el-tabs__item:hover {
   color: RGB(45, 177, 186);
-}
-.center{
-  
 }
 ::v-deep .el-tabs__active-bar {
   background-color: RGB(45, 177, 186);

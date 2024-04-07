@@ -19,11 +19,21 @@
         </el-carousel-item>
       </el-carousel>
     </div>
-    <div></div>
+    <div>
+       <ExcitingActivity></ExcitingActivity>
+      <NewsInformation></NewsInformation>
+     
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+import NewsInformation from '@/component/NewsInformation'
+import ExcitingActivity from '@/component/ExcitingActivity'
+
+
+
+</script>
 <style scoped lang="less">
 .el-carousel__item {
   height: 50vh;

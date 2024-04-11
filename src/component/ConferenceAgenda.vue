@@ -141,14 +141,16 @@ const data = reactive({
   dateTimeActive: 0,
   showList: [],
   showActive: 0,
-  showActiveItem:{}
+  showActiveItem:{
+    url:"https://outin-f6c3661ae52711eeaca900163e32a995.oss-cn-shanghai.aliyuncs.com/sv/269e0595-18eb295c5e6/269e0595-18eb295c5e6.mp4?Expires=1712602157&OSSAccessKeyId=LTAIxSaOfEzCnBOj&Signature=Rmi5aDTpEnMvRkzojir26XzaHCQ%3D"
+  }
 });
 import Video from "@/component/Video.vue";
 import { showDataList } from "@/assets/js/show-data.js";
 
 // 倒计时显示
 const futureDay = () => {
-  const end = Date.parse(new Date("2024-04-06"));
+  const end = Date.parse(new Date("2024-04-15"));
   const now = Date.parse(new Date());
   const msec = end - now;
   let day = parseInt(msec / 1000 / 60 / 60 / 24);

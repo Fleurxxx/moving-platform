@@ -1,0 +1,242 @@
+<template>
+    <div class="emoji-container clearfix">
+        <!-- <div class="input-area" ref="editableInputAreaDiv" contenteditable="true">
+            hello world
+            <img src="https://cdn.sunofbeaches.com/emoji/1.png" alt="">
+        </div> -->
+        <el-input
+            v-model="textarea"
+            maxlength="30"
+            style="width: 240px"
+            placeholder="快和大家一起分享"
+            show-word-limit
+            type="textarea"
+        />
+        <div class="input-area-bar">
+            <span class="emoji-txt" @click="emojiShow = !emojiShow"><i class="fa fa-smile-o"></i> 表情</span>
+            <el-button type="primary" @click="publish">发布</el-button>
+        </div>
+        <transition name="fade">
+             <div class="emoji-item-container" v-show="emojiShow" @mouseleave="hideEmoji">
+                <div class="emoji-item-area">
+                    <img v-for="(emoji, key) in 130" :key="key" @click="addEmoji(emoji)"
+                        :src="'https://cdn.sunofbeaches.com/emoji/' + emoji + '.png'" alt="" />
+                </div>
+            </div>
+        </transition>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "Emoji",
+    data() {
+        return {
+            emojiShow: false,
+            lastEditRange: null,
+            text:'',
+            textarea:'',
+        }
+    },
+    mounted() {
+        this.$refs['editableInputAreaDiv'].onclick = () => {
+            // 获取选定对象
+            let selection = window.getSelection()
+            console.log(selection, selection.rangeCount, 'selection');
+            // 设置最后光标对象
+            if (selection.rangeCount > 0) {
+                // 记录光标最后点击可编辑div中所选择的位置
+                this.lastEditRange = selection.getRangeAt(0);
+                console.log(selection.getRangeAt(0));
+            }
+        }
+    },
+    methods: {
+        publish() {
+            this.$refs['editableInputAreaDiv'].focus()
+            let selection = window.getSelection()
+
+        },
+        toggleEmoji() {
+            this.emojiShow = !this.emojiShow;
+        },
+        hideEmoji() {
+            this.emojiShow = false;
+        },
+        addEmoji(emoji) {
+            let edit = this.$refs['editableInputAreaDiv']
+
+            edit.focus()
+            let selection = window.getSelection()
+            // 如果存在最后的光标对象
+            if (this.lastEditRange) {
+                console.log('last');
+                // 选区对象清除所有光标
+                selection.removeAllRanges();
+                // 并添加最后记录的光标，以还原之前的状态
+                selection.addRange(this.lastEditRange);
+
+                // 创建表情图
+                let img = document.createElement('img');
+                img.src = 'https://cdn.sunofbeaches.com/emoji/' + emoji + '.png';
+                console.log(img);
+                /*
+                // 也可以这样创建img 
+                let image = new Image();
+                image.src = 'https://cdn.sunofbeaches.com/emoji/' + emoji + '.png'; */
+
+                // 获取到最后选择的位置
+                var range = selection.getRangeAt(0);
+
+                // 在此位置插入表情图
+                range.insertNode(img)
+                // range.insertNode(image) // 或者这样插入
+
+                // false，表示将Range对象所代表的区域的起点移动到终点处
+                range.collapse(false)
+
+                // 记录最后的位置
+                this.lastEditRange = selection.getRangeAt(0);
+            } else {
+                console.log('new')
+                // 创建一个img标签（表情）
+                let img = document.createElement('img');
+                img.src = 'https://cdn.sunofbeaches.com/emoji/' + emoji + '.png';
+                console.log(img);
+                // 将表情添加到可编辑的div中，作为可编辑div的子节点
+                edit.appendChild(img)
+                // 使用选取对象，选取可编辑div中的所有子节点
+                selection.selectAllChildren(edit)
+                // 合并到最后面，即实现了添加一个表情后，把光标移到最后面
+                selection.collapseToEnd()
+                return
+            }
+
+
+        }
+    }
+}
+</script>
+
+<style scoped lang="less">
+.emoji-container {
+    width: 100%;
+    height: 100%;
+    margin: 10px auto;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+
+    ::v-deep .input-area {
+        height: 2rem;
+        border: 1px solid #e9e9e9;
+        outline: none;
+        padding: 0.2rem;
+        font-size: 0.24rem;
+        overflow-y: scroll;
+
+        &:focus {
+            border: 1px solid red;
+        }
+
+        img {
+            width: 0.35rem;
+            height: 0.35rem;
+            vertical-align: bottom;
+            margin: 0 5px;;
+
+        }
+    }
+
+    .input-area-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:0.2rem;
+        line-height: 20px;
+        font-size:0.20rem;
+        height: 30px;
+
+        .emoji-txt {
+            color: #4485f9;
+            cursor: pointer;
+        }
+
+
+    }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease-in-out; /* 过渡动画的持续时间和缓动函数 */
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0; /* 进入和离开时的初始状态 */
+}
+.emoji-item-container {
+    background-color: #fff;
+    height: 1.5rem;
+    width: 8.5rem;
+    border-radius: 5px;
+    padding: 5px;
+    overflow-y: auto;
+    margin-top: 14px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, .028);
+    position: absolute; /* 绝对定位 */
+    top: 112%; /* 居中显示 */
+    left: 38.3%; /* 居中显示 */
+    transform: translate(-50%, -50%); /* 居中显示 */
+    z-index: 9999; /* 设置较高的z-index值 */
+    background-color: #fff; /* 背景色 */
+    border-radius: 5px; /* 圆角 */
+    padding: 5px; /* 内边距 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+
+
+    .emoji-item-area {
+
+        img {
+            cursor: pointer;
+            width: 0.35rem;
+            height: 0.35rem;
+            margin: 2px;
+            padding: 9px;
+            border-radius: 8px;
+            vertical-align: bottom;
+            transition: all .28s;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+
+            &:hover {
+                background-color: #eaeaea;
+            }
+        }
+    }
+
+}
+
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+&::-webkit-scrollbar {
+    width: 4px;
+}
+
+&::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/*::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 10px;
+        background: rgba(0,0,0,0.1);
+    }*/
+</style>
+

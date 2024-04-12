@@ -47,6 +47,9 @@ dependencies:
   font-awesome:
     specifier: ^4.7.0
     version: 4.7.0
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   marked:
     specifier: ^12.0.1
     version: 12.0.1
@@ -86,6 +89,9 @@ dependencies:
   vue-class-component:
     specifier: ^8.0.0-0
     version: 8.0.0-alpha.1(vue@3.4.21)
+  vue-emoji-picker-custom:
+    specifier: ^1.0.6
+    version: 1.0.6(vue@3.4.21)
   vue-router:
     specifier: ^4.0.3
     version: 4.0.3(vue@3.4.21)
@@ -8054,6 +8060,14 @@ packages:
       v-click-outside-x: 3.7.1
     dev: false
 
+  /vue-class-component@7.2.6(vue@3.4.21):
+    resolution: {integrity: sha512-+eaQXVrAm/LldalI272PpDe3+i4mPis0ORiMYxF6Ae4hyuCh15W8Idet7wPUEs4N4YptgFHGys4UrgNQOMyO6w==}
+    peerDependencies:
+      vue: ^2.0.0
+    dependencies:
+      vue: 3.4.21(typescript@4.5.5)
+    dev: false
+
   /vue-class-component@8.0.0-alpha.1(vue@3.4.21):
     resolution: {integrity: sha512-jCeU0AVl1vnEDYTKqsPvvRHZIVoap8bq28fqwnFHc2nL8Qnni+HRlaQsOodhagG0dEe/CZS7ECYQFugGBOHdpA==}
     peerDependencies:
@@ -8090,6 +8104,16 @@ packages:
         optional: true
     dependencies:
       vue: 3.4.21(typescript@4.5.5)
+
+  /vue-emoji-picker-custom@1.0.6(vue@3.4.21):
+    resolution: {integrity: sha512-pVBSvJcfEblQE5pkujWeM+guHeTlCebDGroj3MoieX5mwKjH0CHYQZsOyldtMEccTpaU38a2oKFV7hmBBgZOSg==}
+    peerDependencies:
+      vue: ^2.6.11
+    dependencies:
+      vue: 3.4.21(typescript@4.5.5)
+      vue-class-component: 7.2.6(vue@3.4.21)
+      vue-property-decorator: 9.1.2(vue-class-component@7.2.6)(vue@3.4.21)
+    dev: false
 
   /vue-eslint-parser@8.3.0(eslint@7.32.0):
     resolution: {integrity: sha512-dzHGG3+sYwSf6zFBa0Gi9ZDshD7+ad14DGOdTLjruRVgZXe2J+DcZ9iUhyR48z5g1PqRa20yt3Njna/veLJL/g==}
@@ -8213,6 +8237,16 @@ packages:
       watchpack: 2.4.0
       webpack: 5.90.3
     dev: true
+
+  /vue-property-decorator@9.1.2(vue-class-component@7.2.6)(vue@3.4.21):
+    resolution: {integrity: sha512-xYA8MkZynPBGd/w5QFJ2d/NM0z/YeegMqYTphy7NJQXbZcuU6FC6AOdUAcy4SXP+YnkerC6AfH+ldg7PDk9ESQ==}
+    peerDependencies:
+      vue: '*'
+      vue-class-component: '*'
+    dependencies:
+      vue: 3.4.21(typescript@4.5.5)
+      vue-class-component: 7.2.6(vue@3.4.21)
+    dev: false
 
   /vue-router@4.0.3(vue@3.4.21):
     resolution: {integrity: sha512-AD1OjtVPyQHTSpoRsEGfPpxRQwhAhxcacOYO3zJ3KNkYP/r09mileSp6kdMQKhZWP2cFsPR3E2M3PZguSN5/ww==}

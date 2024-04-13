@@ -220,9 +220,6 @@ const handleClick = (tab, event) => {
 ::v-deep .el-tabs__item:hover {
   color: RGB(45, 177, 186);
 }
-.center{
-  
-}
 ::v-deep .el-tabs__active-bar {
   background-color: RGB(45, 177, 186);
 }

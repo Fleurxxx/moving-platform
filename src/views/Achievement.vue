@@ -11,16 +11,31 @@
       </div>
       <el-carousel trigger="click" height="8rem">
         <el-carousel-item v-for="(item, index) in cardItems" :key="index">
-          <el-card class="card" @mouseenter.native="showContent" @mouseleave="hideContent">
+          <el-card
+            class="card"
+            @mouseenter.native="showContent"
+            @mouseleave="hideContent"
+          >
             <div class="card_container">
-              <h1>White&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Paper</h1>
+              <h1>
+                White&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Paper
+              </h1>
               <img :src="item.productSrc" />
             </div>
-            <div class="card_content" :class="{ 'show': isContentVisible }">
+            <div class="card_content" :class="{ show: isContentVisible }">
               <div class="content_container">
                 <h1>{{ item.productName }}</h1>
-                <p>{{item.productIntruction}}</p>
-                <el-button class="download_button" size="large" type="info" :icon="Download" plain round>立即下载</el-button>
+                <p>{{ item.productIntruction }}</p>
+                <el-button
+                  class="download_button"
+                  size="large"
+                  type="info"
+                  :icon="Download"
+                  @click="downloadZip"
+                  plain
+                  round
+                  >立即下载</el-button
+                >
               </div>
             </div>
           </el-card>
@@ -31,7 +46,7 @@
         <em></em>
       </div>
       <div>
-        <VideoRecommendationCard :cardItems="cardItems1"/>
+        <VideoRecommendationCard :cardItems="cardItems1" />
       </div>
     </div>
     <!-- <div class="foot">
@@ -41,45 +56,65 @@
 </template>
 
 <script setup>
-import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';
-import { Delete, Edit, Search, Share, Upload,Download } from '@element-plus/icons-vue'
-import { useRoute, useRouter } from 'vue-router';
-import Article from '@/component/Article'
-import VideoRecommendationCard from '@/component/VideoRecommendationCard.vue';
-
+import {
+  ref,
+  reactive,
+  toRefs,
+  onBeforeMount,
+  onMounted,
+  watchEffect,
+  computed,
+} from "vue";
+import {
+  Delete,
+  Edit,
+  Search,
+  Share,
+  Upload,
+  Download,
+} from "@element-plus/icons-vue";
+import { useRoute, useRouter } from "vue-router";
+import Article from "@/component/Article";
+import VideoRecommendationCard from "@/component/VideoRecommendationCard.vue";
+import JSZip from "jszip"; // 导入用于创建压缩包的库，确保已安装了该库
 const route = useRoute();
 const router = useRouter();
 const data = reactive({
-  productName:'2023西湖论剑-11周年精华特刊',
-  productSrc: require('@/assets/image/common/book1.png'),
-  productIntruction:'建没数宇中国是我国的重要国策。在《数宇中国建设整体布局规划〉 (以下简称《规划》)中明确了数字中国建设按照“2522”的整体框架进行布局。整体框架中，一方面着重强调了数字安全的重要性，数字安全和数字技术并列为支撑数字中国建设的两大能力。另一方面，“安全”在2522框架中无处不在——数字基础设施不可无安全保障，数据资源大循环不可无安全赋能，建设公平规范的数字治理生态不可无安全辅助。建设数字中国，构筑数字安全屏障势在必行。',
-})
+  productName: "2023西湖论剑-11周年精华特刊",
+  productSrc: require("@/assets/image/common/book1.png"),
+  productIntruction:
+    "建没数宇中国是我国的重要国策。在《数宇中国建设整体布局规划〉 (以下简称《规划》)中明确了数字中国建设按照“2522”的整体框架进行布局。整体框架中，一方面着重强调了数字安全的重要性，数字安全和数字技术并列为支撑数字中国建设的两大能力。另一方面，“安全”在2522框架中无处不在——数字基础设施不可无安全保障，数据资源大循环不可无安全赋能，建设公平规范的数字治理生态不可无安全辅助。建设数字中国，构筑数字安全屏障势在必行。",
+});
 
 //白皮书
 const cardItems = ref([
   {
-    productName:'2023西湖论剑-11周年精华特刊',
-    productSrc: require('@/assets/image/common/book1.png'),
-    productIntruction:'建没数宇中国是我国的重要国策。在《数宇中国建设整体布局规划〉 (以下简称《规划》)中明确了数字中国建设按照“2522”的整体框架进行布局。整体框架中，一方面着重强调了数字安全的重要性，数字安全和数字技术并列为支撑数字中国建设的两大能力。另一方面，“安全”在2522框架中无处不在——数字基础设施不可无安全保障，数据资源大循环不可无安全赋能，建设公平规范的数字治理生态不可无安全辅助。建设数字中国，构筑数字安全屏障势在必行。',
+    productName: "2023西湖论剑-11周年精华特刊",
+    productSrc: require("@/assets/image/common/book1.png"),
+    productIntruction:
+      "建没数宇中国是我国的重要国策。在《数宇中国建设整体布局规划〉 (以下简称《规划》)中明确了数字中国建设按照“2522”的整体框架进行布局。整体框架中，一方面着重强调了数字安全的重要性，数字安全和数字技术并列为支撑数字中国建设的两大能力。另一方面，“安全”在2522框架中无处不在——数字基础设施不可无安全保障，数据资源大循环不可无安全赋能，建设公平规范的数字治理生态不可无安全辅助。建设数字中国，构筑数字安全屏障势在必行。",
   },
   {
-    productName: '2023数字安全能力洞察报告',
-    productSrc: require('@/assets/image/common/book2.png'),
-    productIntruction: '数字经济成为全球新一轮科技革命和产业变革的重要引擎，将开启人类数字文明的新时代。数字安全的基础性作用日益突出，在数字化建设进程中，加紧实施国家信息化发展战略，筑牢可信可控的数字安全屏障，夯实数字基础设施安全底座，增强关键基础设施安全韧性，助力数字社会安全发展，已成为支撑现代化建设、增强国家综合实力的必然选择。安恒信息围绕国家数字化建设“2522”顶层布局规划，洞悉各行业和各领域数字化转型中的安全挑战和能力需求，梳理切实解决数字安全本质问题的方法和途径，并从安全模式、架构、能力、产业等方向对未来数字安全发展进行了展望。',
+    productName: "2023数字安全能力洞察报告",
+    productSrc: require("@/assets/image/common/book2.png"),
+    productIntruction:
+      "数字经济成为全球新一轮科技革命和产业变革的重要引擎，将开启人类数字文明的新时代。数字安全的基础性作用日益突出，在数字化建设进程中，加紧实施国家信息化发展战略，筑牢可信可控的数字安全屏障，夯实数字基础设施安全底座，增强关键基础设施安全韧性，助力数字社会安全发展，已成为支撑现代化建设、增强国家综合实力的必然选择。安恒信息围绕国家数字化建设“2522”顶层布局规划，洞悉各行业和各领域数字化转型中的安全挑战和能力需求，梳理切实解决数字安全本质问题的方法和途径，并从安全模式、架构、能力、产业等方向对未来数字安全发展进行了展望。",
   },
 ]);
 
 //新品试用
 const cardItems1 = ref([
   {
-    name:'下一代防火墙',
-    url: require('@/assets/image/common/新品1.png'),
-    intruction:'明御防火墙（DAS-TGFW）秉持“持续边界安全态势改善”的理念，以用户为核心，以边界、应用、威胁、权限为防护对象，构建了以资产为视角的可持续智能安全运营防护体系。是集传统防火墙、入侵防御、防病毒、上网行为管控、VPN、威胁情报等安全模块于一身，同时可联合态势感知、EDR等产品进行一体化建设的智能安全网关。',
+    name: "下一代防火墙",
+    url: require("@/assets/image/common/新品1.png"),
+    intruction:
+      "明御防火墙（DAS-TGFW）秉持“持续边界安全态势改善”的理念，以用户为核心，以边界、应用、威胁、权限为防护对象，构建了以资产为视角的可持续智能安全运营防护体系。是集传统防火墙、入侵防御、防病毒、上网行为管控、VPN、威胁情报等安全模块于一身，同时可联合态势感知、EDR等产品进行一体化建设的智能安全网关。",
   },
   {
-    name:'安全托管运营服务MSS',
-    url: require('@/assets/image/common/新品2.png'),
-    intruction:'提供体系化、常态化的安全托管服务，协助构建7*24小时全天候、全方位的安全运营体系， 实现安全风险从发现到响应处置的闭环，持续不断提高网络安全水平',
+    name: "安全托管运营服务MSS",
+    url: require("@/assets/image/common/新品2.png"),
+    intruction:
+      "提供体系化、常态化的安全托管服务，协助构建7*24小时全天候、全方位的安全运营体系， 实现安全风险从发现到响应处置的闭环，持续不断提高网络安全水平",
   },
 ]);
 const isContentVisible = ref(false);
@@ -90,55 +125,67 @@ function hideContent() {
   isContentVisible.value = false;
 }
 
-onBeforeMount(() => {
-  
-})
+const downloadZip = async () => {
+  const zip = new JSZip();
+  // 在这里添加你要压缩的文件或文件夹，这里只是示例
+  zip.file("hello.txt", "Hello World");
+
+  // 生成压缩包
+  const content = await zip.generateAsync({ type: "blob" });
+
+  // 创建一个下载链接并触发点击
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(content);
+  link.download = "book.zip";
+  link.click();
+};
+
+onBeforeMount(() => {});
 onMounted(() => {
-    data.name = '安恒信息';
-    data.intruction = '杭州安恒信息技术股份有限公司（简称：安恒信息）成立于2007年，于2019年登陆科创板，是网络安全行业发展速度最快的上市公司之一。作为行业领导者，安恒信息秉承“构建安全可信的数字世界”的企业使命，以数字经济的安全基石为企业定位，形成了云安全、大数据安全、物联网安全、智慧城市安全、工业控制系统安全及工业互联网安全五大市场战略，凭借强大的研发实力和持续的产品创新，完成覆盖网络信息安全全生命周期的产品、服务及解决方案体系，作为国家级核心安保单位，参与了近乎全部国家重大活动网络安保，实现零失误。2020年11月23日，安恒信息正式成为2022年杭州第19届亚运会网络安全类官方合作伙伴，这也是国际大型综合性赛事网络信息安全类最高层级合作。';
-})
-watchEffect(()=>{
-})
+  data.name = "安恒信息";
+  data.intruction =
+    "杭州安恒信息技术股份有限公司（简称：安恒信息）成立于2007年，于2019年登陆科创板，是网络安全行业发展速度最快的上市公司之一。作为行业领导者，安恒信息秉承“构建安全可信的数字世界”的企业使命，以数字经济的安全基石为企业定位，形成了云安全、大数据安全、物联网安全、智慧城市安全、工业控制系统安全及工业互联网安全五大市场战略，凭借强大的研发实力和持续的产品创新，完成覆盖网络信息安全全生命周期的产品、服务及解决方案体系，作为国家级核心安保单位，参与了近乎全部国家重大活动网络安保，实现零失误。2020年11月23日，安恒信息正式成为2022年杭州第19届亚运会网络安全类官方合作伙伴，这也是国际大型综合性赛事网络信息安全类最高层级合作。";
+});
+watchEffect(() => {});
 
 defineExpose({
-  ...toRefs(data)
-})
-
+  ...toRefs(data),
+});
 </script>
-<style scoped lang='less'>
-.box{
+<style scoped lang="less">
+.box {
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position-y: bottom;
-  background-image: url('@/assets/image/common/list_bg_image.png');
+  background-image: url("@/assets/image/common/list_bg_image.png");
 }
-.header{
-  h1{
+.header {
+  h1 {
     position: absolute;
     left: 20%;
-    top:25%;
-    font-size:0.7rem;
+    top: 25%;
+    font-size: 0.7rem;
     color: #fff;
   }
 }
-.banner-img{
-  width:100%;
+.banner-img {
+  width: 100%;
   height: 3.5rem;
 }
-.foot{
+.foot {
   position: relative;
-  bottom:0;
+  bottom: 0;
 }
-.center{
+.center {
   padding: 1rem 2rem;
 }
-.title{
+.title {
   display: flex;
   // justify-content:center;
   align-items: center;
   flex-direction: column;
-  height:1.5rem;
-  h1{
+  height: 1.5rem;
+  h1 {
     font-size: 0.5rem;
     // font-weight: normal;
     margin-bottom: -5px;
@@ -149,56 +196,56 @@ defineExpose({
     width: 5%;
   }
 }
-.card{
-  width:100%;
+.card {
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
-.card_container{
+.card_container {
   height: 6rem;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  h1{
+  h1 {
     position: absolute;
     text-align: center;
     font-size: 1.6rem;
     z-index: 0;
   }
-  img{
-    width:6rem;
+  img {
+    width: 6rem;
     z-index: 0;
   }
 }
-.card_content{
+.card_content {
   position: absolute;
   top: 0;
-  right:-100%; /* 初始位置在卡片右侧外，想从做外侧用left: -100%; */
+  right: -100%; /* 初始位置在卡片右侧外，想从做外侧用left: -100%; */
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); 
-  transition: right 0.6s ease, opacity 0.6s ease; 
-  opacity: 0; 
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: right 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
   color: #fff;
 }
 .show {
   right: 0; /* 右侧滑入 */
   opacity: 1; /* 显示内容 */
 }
-.content_container{
-  margin:1rem 2rem;
-  h1{
+.content_container {
+  margin: 1rem 2rem;
+  h1 {
     font-size: 0.6rem;
     line-height: 1.2rem;
   }
-  p{
+  p {
     line-height: 0.32rem;
-    font-size:0.2rem;
+    font-size: 0.2rem;
     text-indent: 2em;
   }
 }
-.download_button{
-  width:1.8rem;
+.download_button {
+  width: 1.8rem;
   position: absolute;
   bottom: 1rem;
 }

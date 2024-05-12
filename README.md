@@ -1,5 +1,5 @@
 # moving-platform
-活动展示平台
+一站式数字会议展示平台
 
 ## Run It
 
